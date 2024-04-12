@@ -6,16 +6,18 @@ function Card({ title, src, addCard, product }) {
 
   useEffect(() => {}, [flipped]);
 
-  const handleButtonClick = (event) => {
-    // Prevent the click event from bubbling up to the parent div
-    event.stopPropagation();
-    
+  const handleButtonClick = (product) => {
+
     // Call the addCard function passed as a prop
     const cardsMatch = addCard(product);
     
     // If cards don't match, flip them back
     if (!cardsMatch) {
-      setFlipped(false);
+      setTimeout(()=>{
+        
+        setFlipped(false);
+
+      },"2000")
     }
   };
 
@@ -23,6 +25,7 @@ function Card({ title, src, addCard, product }) {
     <div
       className="flip-card"
       onClick={() => {
+        handleButtonClick(product)
         setFlipped(!flipped);
       }}
     >
@@ -37,7 +40,6 @@ function Card({ title, src, addCard, product }) {
         <div className="flip-card-back h-[300px] flex flex-col items-center justify-center">
           <p className="p-2 text-center">{title}</p>
           <img src={src} alt={title} className="w-full rounded-lg" />
-          <button onClick={handleButtonClick}>SELECCIONAR</button>
         </div>
       </div>
     </div>

@@ -35,11 +35,13 @@ function Main() {
 
       if (match) {
         // Cards match
-        dispatch({ type: "COMPARE_CARDS",payload:product });
-        return true;
+        setTimeout(() => {
+          dispatch({ type: "COMPARE_CARDS", payload: product });
+          return true;
+        },"1000");
       } else {
         // Cards don't match
-        dispatch({ type: "COMPARE_CARDS",payload:product });
+        dispatch({ type: "COMPARE_CARDS", payload: product });
         return false;
       }
     }
