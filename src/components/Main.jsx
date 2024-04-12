@@ -7,11 +7,13 @@ import { cardsInitialState, cardsReducer } from "@/reducer/reducer";
 
 function Main() {
   const [products, dispatch] = useReducer(cardsReducer, cardsInitialState);
+  const [level, setLevel] = useState(1);
+
 
   //Función para obtener data de la API de MELI
-  const handleFetchData = (inicio = 0, limite = 6) => {
+  const handleFetchData = (inicio = 0, limite = 6, producto = 'iphone') => {
     axios
-      .get(`https://api.mercadolibre.com/sites/MLA/search?q=iphone`)
+      .get(`https://api.mercadolibre.com/sites/MLA/search?q=${producto}`)
       .then((response) => {
         const originalProducts = response.data.results.slice(inicio, limite); // Limitamos a 6 productos
         const duplicatedProducts = [...originalProducts, ...originalProducts]; // Duplicar los productos
@@ -36,7 +38,7 @@ function Main() {
         setTimeout(() => {
           dispatch({ type: "COMPARE_CARDS", payload: product });
           return true;
-        },"1000");
+        }, "1000");
       } else {
         // Cards don't match
         dispatch({ type: "COMPARE_CARDS", payload: product });
@@ -51,8 +53,6 @@ function Main() {
   useEffect(() => {
     handleFetchData();
     let fecha = Date.now() / 30000000;
-
-
   }, []);
 
   //Función para desordenar el array con cards gemelas:
@@ -63,6 +63,17 @@ function Main() {
       [array[i], array[j]] = [array[j], array[i]];
     }
     return array;
+  };
+
+  //Función para avanzar de nivel
+
+  const handleNextLevel = () => {
+    console.log('entró a la llamada')
+    setLevel(level + 1);
+    handleFetchData(0,6,'motorola');
+    if (level === 3) {
+      handleFetchData(0,6,'xiaiomi');
+    }
   };
 
   return (
@@ -84,6 +95,11 @@ function Main() {
               product={product}
             />
           ))}
+        {products.board.length === 0 && level < 4 ? (
+          <button onClick={() => handleNextLevel()}>SIGUIENTE NIVEL</button>
+        ) : (
+          level >= 4 && <p>FELICITACIONES TERMINASTE</p>
+        )}
       </div>
     </div>
   );
