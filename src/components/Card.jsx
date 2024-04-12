@@ -3,11 +3,12 @@ import { useState, useEffect } from "react";
 
 function Card({ title, src, addCard, product }) {
   const [flipped, setFlipped] = useState(false);
+  const [glow, setGlow] = useState(false)
 
   useEffect(() => {}, [flipped]);
 
   const handleButtonClick = (product) => {
-
+    setGlow(true)
     // Call the addCard function passed as a prop
     const cardsMatch = addCard(product);
     
@@ -23,7 +24,7 @@ function Card({ title, src, addCard, product }) {
 
   return (
     <div
-      className="flip-card"
+      className={`flip-card`}
       onClick={() => {
         handleButtonClick(product)
         setFlipped(!flipped);
@@ -31,7 +32,7 @@ function Card({ title, src, addCard, product }) {
     >
       <div
         className={`flip-card-inner ${
-          flipped ? "[transform:rotateY(180deg)]" : ""
+          flipped && glow ? "[transform:rotateY(180deg)] shadow-custom transition-all duration-500 ease-in-out" : ""
         }`}
       >
         <div className="flip-card-front bg-yellow-400">

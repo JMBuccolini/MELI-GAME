@@ -7,8 +7,6 @@ import { cardsInitialState, cardsReducer } from "@/reducer/reducer";
 
 function Main() {
   const [products, dispatch] = useReducer(cardsReducer, cardsInitialState);
-  const [counter, setCounter] = useState(1);
-  const [score, setScore] = useState(0);
 
   //Función para obtener data de la API de MELI
   const handleFetchData = (inicio = 0, limite = 6) => {
@@ -54,7 +52,7 @@ function Main() {
     handleFetchData();
     let fecha = Date.now() / 30000000;
 
-    setScore(fecha);
+
   }, []);
 
   //Función para desordenar el array con cards gemelas:
@@ -71,7 +69,7 @@ function Main() {
     <div className="flex flex-col justify-center items-center">
       <h1 className="mt-24 text-[30px] text-white">Juego de memoria</h1>
       <p className="text-white">
-        elige los pares de productos y avanza al siguiente nivel!
+        ¡Encuentra los pares de productos y avanza al siguiente nivel!
       </p>
 
       <div className="flex gap-x-4 mt-14 container flex-wrap gap-y-14 justify-center items-center">

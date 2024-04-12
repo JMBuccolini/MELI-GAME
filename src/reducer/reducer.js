@@ -6,7 +6,7 @@ export const cardsInitialState = {
 export function cardsReducer(state, action) {
   switch (action.type) {
     case "ADD_CARD":
-      return state.queue.length < 3
+      return state.queue.length < 2
         ? {
             ...state,
             queue: [...state.queue, action.payload],
