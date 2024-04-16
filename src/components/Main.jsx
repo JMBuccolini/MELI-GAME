@@ -3,26 +3,33 @@
 import React, { useEffect, useState, useReducer } from "react";
 import axios from "axios";
 import Card from "./Card";
+import Timer from "@/components/Timer";
 import { cardsInitialState, cardsReducer } from "@/reducer/reducer";
 
 function Main() {
   const [products, dispatch] = useReducer(cardsReducer, cardsInitialState);
   const [level, setLevel] = useState(1);
+  const [board, setBoard] = useState(false);
+  const [finish, setFinish] = useState(false);
 
+  //ESTO NOS DEVUELVE LOS SEGUNDOS EN UN CONTADOR DESCENDENTE PARA EL TIMER
+  const time = new Date();
+  time.setSeconds(time.getSeconds() + 400);
 
   //Función para obtener data de la API de MELI
-  const handleFetchData = (inicio = 0, limite = 2, producto = 'iphone') => {
-    axios
+  const handleFetchData = async (inicio = 0, limite = 2, producto = 'iphone') => {
+    await axios
       .get(`https://api.mercadolibre.com/sites/MLA/search?q=${producto}`)
       .then((response) => {
         const originalProducts = response.data.results.slice(inicio, limite); // Limitamos a 6 productos
         const duplicatedProducts = [...originalProducts, ...originalProducts]; // Duplicar los productos
         const shuffledProducts = shuffleArray(duplicatedProducts); // Reordenar aleatoriamente los productos
         dispatch({ type: "FILL_BOARD", payload: shuffledProducts }); // Enviar al reducer para llenar el estado global
+
       })
       .catch((error) => {
         console.error("Error fetching products:", error);
-      });
+      }).finally(() => setBoard(true));
   };
 
   //AGREGAR UNA CARTA AL QUEUE:
@@ -51,7 +58,6 @@ function Main() {
   //Llamado a la API de MELI:
   useEffect(() => {
     handleFetchData();
-    let fecha = Date.now() / 30000000;
   }, []);
 
   //Función para desordenar el array con cards gemelas:
@@ -67,11 +73,23 @@ function Main() {
   //Función para avanzar de nivel
 
   const handleNextLevel = () => {
-    setLevel(level + 1);
-    handleFetchData(0,6,'motorola'); //por cada nivel, aumenta la cantidad-dificultad
-    if (level === 3) {
-      handleFetchData(0,8,'xiaiomi');
+    if (products.board.length > 0) {
+      alert('Tenés que terminar este tablero primero')
+      return
     }
+    //por cada nivel, aumenta la cantidad-dificultad
+    setLevel(level + 1);
+
+    if (level === 2) {
+      handleFetchData(0, 2, 'motorola');
+    } else if (level === 3) {
+      handleFetchData(0, 2, 'xiaiomi');
+    } else if (level === 4) {
+
+      setBoard(false)
+      setFinish(true)
+    }
+
   };
 
   return (
@@ -80,6 +98,9 @@ function Main() {
       <p className="text-white">
         ¡Encuentra los pares de productos y avanza al siguiente nivel!
       </p>
+
+      <Timer expiryTimestamp={time} finished={finish} />
+
 
       <div className="flex gap-x-4 mt-14 container flex-wrap gap-y-14 justify-center items-center">
         {products.board &&
@@ -93,13 +114,13 @@ function Main() {
               product={product}
             />
           ))}
-        {products.board.length === 0 && level < 4 ? (
-          <button 
-          className="py-[14px] px-[20px] text-white bg-blue-400 hover:bg-blue-600 rounded-lg"
-          onClick={() => handleNextLevel()}>SIGUIENTE NIVEL</button>
-        ) : (
-          level >= 4 && <p>FELICITACIONES TERMINASTE</p>
-        )}
+
+        <button
+          className={`${board ? 'block' : 'hidden'}  py-[14px] px-[20px] text-white bg-blue-400 hover:bg-blue-600 rounded-lg`}
+          onClick={() => handleNextLevel()}>SIGUIENTE NIVEL
+
+        </button>
+
       </div>
     </div>
   );
