@@ -24,7 +24,7 @@ function Card({ title, src, addCard, product }) {
 
   return (
     <div
-      className={`flip-card`}
+      className={`flip-card  transition-all duration-200 ease-in-out`}
       onClick={() => {
         handleButtonClick(product)
         setFlipped(!flipped);

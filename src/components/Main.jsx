@@ -11,7 +11,7 @@ function Main() {
 
 
   //Función para obtener data de la API de MELI
-  const handleFetchData = (inicio = 0, limite = 6, producto = 'iphone') => {
+  const handleFetchData = (inicio = 0, limite = 2, producto = 'iphone') => {
     axios
       .get(`https://api.mercadolibre.com/sites/MLA/search?q=${producto}`)
       .then((response) => {
@@ -68,11 +68,10 @@ function Main() {
   //Función para avanzar de nivel
 
   const handleNextLevel = () => {
-    console.log('entró a la llamada')
     setLevel(level + 1);
-    handleFetchData(0,6,'motorola');
+    handleFetchData(0,6,'motorola'); //por cada nivel, aumenta la cantidad-dificultad
     if (level === 3) {
-      handleFetchData(0,6,'xiaiomi');
+      handleFetchData(0,8,'xiaiomi');
     }
   };
 
@@ -96,7 +95,9 @@ function Main() {
             />
           ))}
         {products.board.length === 0 && level < 4 ? (
-          <button onClick={() => handleNextLevel()}>SIGUIENTE NIVEL</button>
+          <button 
+          className="py-[14px] px-[20px] text-white bg-blue-400 hover:bg-blue-600 rounded-lg"
+          onClick={() => handleNextLevel()}>SIGUIENTE NIVEL</button>
         ) : (
           level >= 4 && <p>FELICITACIONES TERMINASTE</p>
         )}
