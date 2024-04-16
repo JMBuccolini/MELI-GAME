@@ -32,7 +32,6 @@ function Main() {
       const [firstCard] = products.queue;
       const secondCard = product;
       const match = firstCard.id === secondCard.id;
-
       if (match) {
         // Cards match
         setTimeout(() => {
