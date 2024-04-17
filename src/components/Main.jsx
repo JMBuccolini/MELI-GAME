@@ -77,20 +77,23 @@ function Main() {
       alert('Tenés que terminar este tablero primero')
       return
     }
-    //por cada nivel, aumenta la cantidad-dificultad
-    setLevel(level + 1);
-
+    // Actualizar el estado utilizando una función callback
+    setLevel(prevLevel => prevLevel + 1);
+  };
+  
+  useEffect(() => {
+    console.log('valor de level', level);
+    setBoard((prev)=>!prev)
     if (level === 2) {
       handleFetchData(0, 2, 'motorola');
     } else if (level === 3) {
       handleFetchData(0, 2, 'xiaiomi');
     } else if (level === 4) {
-
       setBoard(false)
-      setFinish(true)
+      setFinish(true);
     }
-
-  };
+  }, [level]);
+  
 
   return (
     <div className="flex flex-col justify-center items-center">
@@ -116,8 +119,8 @@ function Main() {
           ))}
 
         <button
-          className={`${board ? 'block' : 'hidden'}  py-[14px] px-[20px] text-white bg-blue-400 hover:bg-blue-600 rounded-lg`}
-          onClick={() => handleNextLevel()}>SIGUIENTE NIVEL
+          className={`py-[14px] px-[20px] text-white bg-blue-400 hover:bg-blue-600 rounded-lg`}
+          onClick={() => handleNextLevel()}><p>{`${board? 'SIGUIENTE NIVEL': 'LOADING'}`}</p>
 
         </button>
 
