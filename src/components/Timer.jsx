@@ -3,7 +3,7 @@ import { useTimer } from 'react-timer-hook'
 import { useEffect } from 'react';
 import FinalScreen from './FinalScreen'
 
-export default function Timer({ expiryTimestamp, finished }) {
+export default function Timer({ expiryTimestamp, finished, handleFetchData, dispatch, setLevel }) {
 
     const {
         totalSeconds,
@@ -25,6 +25,13 @@ export default function Timer({ expiryTimestamp, finished }) {
         }
     }, [finished]);
 
+    useEffect(()=>{
+        if(totalSeconds === 0){
+            setLevel(4)
+            dispatch({type:'CLEAR_BOARD'})
+        }
+    })
+
 
     return (
         <div>
@@ -36,9 +43,9 @@ export default function Timer({ expiryTimestamp, finished }) {
 
             </div>
 
-            <div className={`${finished ? 'flex' : 'hidden'}`}>
+            <div className={`${finished || totalSeconds === 0 ? 'flex' : 'hidden'}`}>
 
-                <FinalScreen timeRemaining={totalSeconds} />
+                <FinalScreen timeRemaining={totalSeconds} resetGame = {handleFetchData}/>
             </div>
 
 

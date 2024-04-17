@@ -37,6 +37,11 @@ export function cardsReducer(state, action) {
         ...state,
         board: action.payload,
       };
+    case "CLEAR_BOARD":
+      return {
+        ...state,
+        board:[]
+      }
 
     default:
       return state;
