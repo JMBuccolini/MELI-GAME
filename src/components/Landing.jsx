@@ -85,6 +85,9 @@ export default function Landing() {
             <div className='w-screen pl-24 mb-14'>
                 <span className='text-[10px] text-gray-500'>*Mercado Libre no auspicia, produce ni promociona este juego ni es responsable de ninguna manera por el mismo</span>
             </div>
+            <div className='w-screen pl-24 mb-14'>
+                <span className='text-[10px] text-gray-500'>Creado por Juan M. Buccolini - FullStack Developer MERN</span>
+            </div>
         </div>
     )
 }

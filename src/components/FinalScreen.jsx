@@ -1,5 +1,6 @@
 import { useRouter } from "next/navigation";
-
+import ContactMe from '@/components/ContactMe'
+;
 export default function FinalScreen({ timeRemaining, resetGame }) {
     const router= useRouter()
     const score = timeRemaining + 50 * 2;
@@ -39,6 +40,9 @@ export default function FinalScreen({ timeRemaining, resetGame }) {
                         Ir a Mercado Libre
                     </button>
                 </a>
+            </div>
+            <div>
+                <ContactMe/>
             </div>
 
         </div>

@@ -21,7 +21,7 @@ function Main() {
   time.setSeconds(time.getSeconds() + 400);
 
   //Función para obtener data de la API de MELI
-  const handleFetchData = async (inicio = 0, limite = 4, producto = 'iphone') => {
+  const handleFetchData = async (inicio = 0, limite = 2, producto = 'iphone') => {
     await axios
       .get(`https://api.mercadolibre.com/sites/MLA/search?q=${producto}`)
       .then((response) => {
@@ -94,10 +94,10 @@ function Main() {
     console.log('valor de level', level);
     setBoard((prev) => !prev)
     if (level === 2) {
-      handleFetchData(0, 6, 'motorola');
+      handleFetchData(0, 2, 'motorola');
     } else if (level === 3) {
       handleFetchData(0, 2, 'xiaiomi');
-    } else if (level === 8) {
+    } else if (level === 4) {
       setBoard(false)
       setFinish(true);
     }
@@ -107,7 +107,7 @@ function Main() {
   return (
     <div className="flex flex-col justify-center items-center">
       <h1 className="mt-24 text-[30px] text-white">Juego de memoria</h1>
-      <p className="text-white">
+      <p className={`${finish ? 'hidden' : 'block'} text-white`}>
         ¡Encuentra los pares de productos y avanza al siguiente nivel!
       </p>
 
