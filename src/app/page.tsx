@@ -1,9 +1,21 @@
-import Landing from '@/components/Landing'
+'use client'
 
+import Landing from '@/components/Landing'
+import { useEffect } from 'react';
+
+import AOS from 'aos';
+import 'aos/dist/aos.css'; 
 export default function Home() {
+
+  useEffect(() => {
+
+    AOS.init();
+  })
+
+
   return (
-    <main>
-      <Landing/>
+    <main className='w-full h-full'>
+      <Landing />
     </main>
   );
 }

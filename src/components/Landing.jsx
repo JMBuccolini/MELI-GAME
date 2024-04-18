@@ -1,35 +1,90 @@
 'use client'
 
-import {useRouter} from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
-export default function Landing(){
+export default function Landing() {
 
     const router = useRouter()
 
-    return(
-        <div className="h-screen bg-yellow-300 text-white font-black w-full flex flex-col items-center">
-            <div className='flex w-full container px-14'>
-                <div className='flex text-[80px] font-black w-[200px]'>
-                    BIENVENIDOS AL JUEGO DE MERCADO LIBRE
+    return (
+        <div className="h-screen bg-yellow-300 text-white font-black w-screen flex flex-col items-center">
+            <div className='flex w-full container h-full justify-center items-center'>
+                <div className='flex flex-col text-[90px] font-black w-full'>
+                    <div className='overflow-hidden'>
+                        <div data-aos='fade-up' data-aos-duration='1000' data-aos-delay='200'>
+                            <p>BIENVENIDOS</p>
+                        </div>
+                    </div>
+                    <div className='overflow-hiddenƒ'>
+                        <div data-aos='fade-up' data-aos-duration='1000' data-aos-delay='400'>
+
+                            <p>AL JUEGO DE</p>
+                        </div>
+                    </div>
+                    <div className='overflow-hidden'>
+                        <div data-aos='fade-up' data-aos-duration='1000' data-aos-delay='600'>
+
+                            <p>MEMORIA</p>
+                        </div>
+                    </div>
+                    <div className='overflow-hidden'>
+                        <div data-aos='fade-up' data-aos-duration='1000' data-aos-delay='800'>
+
+                            <p>CON MELI*</p>
+                        </div>
+                    </div>
                 </div>
-                <div className="flex flex-col  items-center w-full">
-                    <p>Instrucciones:</p>
-                    <ul>
-                        <li>Instrucción 1</li>
-                        <li>Instrucción 2</li>
-                        <li>Instrucción 3</li>
-                        <li>Instrucción 4</li>
-                        <li>Instrucción 5</li>
+                <div className="flex flex-col items-left w-full pl-14">
+                    <ul className='pl-8 flex flex-col gap-y-2'>
+                        <div className='overflow-hidden'>
+                            <div data-aos='fade-up' data-aos-duration='1000' data-aos-delay='200'>
+
+                                <li>INSTRUCCIONES:</li>
+                            </div>
+                        </div>
+                        <div className='overflow-hidden'>
+                            <div data-aos='fade-up' data-aos-duration='1000' data-aos-delay='300'>
+
+                                <li>_ Debes hacer click en las cartas para visualizarlas</li>
+                            </div>
+                        </div>
+                        <div className='overflow-hidden'>
+                            <div data-aos='fade-up' data-aos-duration='1000' data-aos-delay='400'>
+
+                                <li>_ Si las cartas coinciden, se irán del tablero. Caso contrario, se darán vuelta nuevamente</li>
+                            </div>
+                        </div>
+                        <div className='overflow-hidden'>
+                            <div data-aos='fade-up' data-aos-duration='1000' data-aos-delay='500'>
+
+                                <li>_ Son un total de tres niveles que aumentan de dificultad</li>
+                            </div>
+                        </div>
+                        <div className='overflow-hidden'>
+                            <div data-aos='fade-up' data-aos-duration='1000' data-aos-delay='600'>
+
+                                <li>_ Verás un cronómetro, en este se basa tu puntaje final</li>
+                            </div>
+                        </div>
+                        <div className='overflow-hidden'>
+                            <div data-aos='fade-up' data-aos-duration='1000' data-aos-delay='700'>
+
+                                <li>_ Al finalizar podrás colocar tu nombre para guardar tu puntaje en la tabla</li>
+                            </div>
+                        </div>
                     </ul>
                 </div>
             </div>
-            <button 
-            className='rounded-lg px-[20px] py-[14px] text-[18px] text-white border-2 border-blue-500 w-[250px] hover:bg-blue-600 transition-all duration-300 ease-in-out'
-            onClick={()=>{
-                router.push('/home')
-            }}>
-                ¡Jugar!
+            <button
+                className='rounded-lg px-[20px] py-[14px] text-[18px] text-white border-2 bg-[#3483fa] border-blue-500 w-[250px] hover:bg-blue-600 hover:scale-125  transition-all duration-700 ease-in-out mb-14'
+                onClick={() => {
+                    router.push('/home')
+                }}>
+                JUGAR
             </button>
+            <div className='w-screen pl-24 mb-14'>
+                <span className='text-[10px] text-gray-500'>*Mercado Libre no auspicia, produce ni promociona este juego ni es responsable de ninguna manera por el mismo</span>
+            </div>
         </div>
     )
 }
