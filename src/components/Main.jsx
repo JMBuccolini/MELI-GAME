@@ -14,10 +14,10 @@ function Main() {
 
   //ESTO NOS DEVUELVE LOS SEGUNDOS EN UN CONTADOR DESCENDENTE PARA EL TIMER
   const time = new Date();
-  time.setSeconds(time.getSeconds() + 400);
+  time.setSeconds(time.getSeconds() + 4);
 
   //Función para obtener data de la API de MELI
-  const handleFetchData = async (inicio = 0, limite = 2, producto = 'iphone') => {
+  const handleFetchData = async (inicio = 0, limite = 4, producto = 'iphone') => {
     await axios
       .get(`https://api.mercadolibre.com/sites/MLA/search?q=${producto}`)
       .then((response) => {
@@ -25,7 +25,6 @@ function Main() {
         const duplicatedProducts = [...originalProducts, ...originalProducts]; // Duplicar los productos
         const shuffledProducts = shuffleArray(duplicatedProducts); // Reordenar aleatoriamente los productos
         dispatch({ type: "FILL_BOARD", payload: shuffledProducts }); // Enviar al reducer para llenar el estado global
-
       })
       .catch((error) => {
         console.error("Error fetching products:", error);
@@ -85,10 +84,10 @@ function Main() {
     console.log('valor de level', level);
     setBoard((prev) => !prev)
     if (level === 2) {
-      handleFetchData(0, 2, 'motorola');
+      handleFetchData(0, 6, 'motorola');
     } else if (level === 3) {
       handleFetchData(0, 2, 'xiaiomi');
-    } else if (level === 4) {
+    } else if (level === 8) {
       setBoard(false)
       setFinish(true);
     }

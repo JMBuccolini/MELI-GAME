@@ -1,11 +1,14 @@
+import { useRouter } from "next/navigation";
 
 export default function FinalScreen({ timeRemaining, resetGame }) {
-
+    const router= useRouter()
     const score = timeRemaining + 50 * 2;
-
+    const handleRetry = () => {
+        router.back()
+    };
 
     return (
-        <div className="flex flex-col justify-center items-center">
+        <div className="flex flex-col justify-center items-center h-full">
             <div className="text-white text-[20px]">
                 {
                     timeRemaining != 0 ?
@@ -15,17 +18,18 @@ export default function FinalScreen({ timeRemaining, resetGame }) {
                             <p>Tu puntuación es: {score}</p>
                         </div>
                         :
-                        <div>
-                            <p> Se ha acabdo el tiempo, ¡inténtalo de nuevo!</p>
+                        <div className="flex flex-col justify-center items-center gap-y-8">
+                            <p> Se ha acabado el tiempo, ¡mejor suerte la próxima! 
+                            </p>
                             <p>Tu puntuación es: {score}</p>
                         </div>
                 }
             </div>
 
-            <div className=" flex justify-center items-center gap-x-14">
+            <div className=" flex justify-center items-center gap-x-14 mt-14">
 
                 <button
-                    onClick={() => resetGame()}
+                    onClick={() => handleRetry()}
                     className={`py-[14px] px-[20px] text-white bg-blue-400 hover:bg-blue-600 rounded-lg`}>
                     Intentar de nuevo
                 </button>

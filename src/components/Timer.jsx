@@ -7,15 +7,7 @@ export default function Timer({ expiryTimestamp, finished, handleFetchData, disp
 
     const {
         totalSeconds,
-        seconds,
-        minutes,
-        hours,
-        days,
-        isRunning,
-        start,
         pause,
-        resume,
-        restart,
     } = useTimer({ expiryTimestamp, onExpire: () => console.warn('onExpire called') })
 
 
@@ -35,15 +27,15 @@ export default function Timer({ expiryTimestamp, finished, handleFetchData, disp
 
     return (
         <div>
-            <div className={`${finished ? 'hidden' : 'flex'}`}>
+            <div className={`${finished ? 'hidden' : 'flex'} justify-center items-center text-white text-[40px] mt-14 mb-14`}>
 
-                <span>
-                    {totalSeconds}
+                <span className={`${totalSeconds === 0 ? 'hidden' : ''}`}>
+                    Te quedan {totalSeconds} segundos
                 </span>
 
             </div>
 
-            <div className={`${finished || totalSeconds === 0 ? 'flex' : 'hidden'}`}>
+            <div className={`${finished || totalSeconds === 0 ? 'flex' : 'hidden'} mt-14`}>
 
                 <FinalScreen timeRemaining={totalSeconds} resetGame = {handleFetchData}/>
             </div>
