@@ -31,12 +31,12 @@ export default function FinalScreen({ timeRemaining, resetGame }) {
 
                 <button
                     onClick={() => handleRetry()}
-                    className={`py-[14px] px-[20px] text-white bg-blue-400 hover:bg-blue-600 rounded-lg`}>
+                    className={`py-[14px] px-[20px] text-white bg-blue-400 hover:bg-blue-600 rounded-lg hover:scale-110 transition-all duration-500 ease-in-out`}>
                     Intentar de nuevo
                 </button>
 
                 <a href="https://www.mercadolibre.com.ar/">
-                    <button className={`py-[14px] px-[20px] text-white bg-blue-400 hover:bg-blue-600 rounded-lg`}>
+                    <button className={`py-[14px] px-[20px] text-white bg-blue-400 hover:bg-blue-600 rounded-lg hover:scale-110 transition-all duration-500 ease-in-out`}>
                         Ir a Mercado Libre
                     </button>
                 </a>
