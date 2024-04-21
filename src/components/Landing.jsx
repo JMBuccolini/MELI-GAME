@@ -12,25 +12,25 @@ export default function Landing() {
                 <div className='flex flex-col text-[90px] font-black w-full'>
                     <div className='overflow-hidden'>
                         <div data-aos='fade-up' data-aos-duration='1000' data-aos-delay='200'>
-                            <p>BIENVENIDOS</p>
+                            <p className='stroked'>BIENVENIDOS</p>
                         </div>
                     </div>
                     <div className='overflow-hiddenƒ'>
                         <div data-aos='fade-up' data-aos-duration='1000' data-aos-delay='400'>
 
-                            <p>AL JUEGO DE</p>
+                            <p className='stroked'>AL JUEGO DE</p>
                         </div>
                     </div>
                     <div className='overflow-hidden'>
                         <div data-aos='fade-up' data-aos-duration='1000' data-aos-delay='600'>
 
-                            <p>MEMORIA</p>
+                            <p className='stroked'>MEMORIA</p>
                         </div>
                     </div>
                     <div className='overflow-hidden'>
                         <div data-aos='fade-up' data-aos-duration='1000' data-aos-delay='800'>
 
-                            <p>CON MELI*</p>
+                            <p className='stroked'>CON MELI*</p>
                         </div>
                     </div>
                 </div>
@@ -39,37 +39,37 @@ export default function Landing() {
                         <div className='overflow-hidden'>
                             <div data-aos='fade-up' data-aos-duration='1000' data-aos-delay='200'>
 
-                                <li>INSTRUCCIONES:</li>
+                                <li className='shadow-text' >INSTRUCCIONES:</li>
                             </div>
                         </div>
                         <div className='overflow-hidden'>
                             <div data-aos='fade-up' data-aos-duration='1000' data-aos-delay='300'>
 
-                                <li>_ Debes hacer click en las cartas para visualizarlas</li>
+                                <li className='shadow-text'>_ Debes hacer click en las cartas para visualizarlas</li>
                             </div>
                         </div>
                         <div className='overflow-hidden'>
                             <div data-aos='fade-up' data-aos-duration='1000' data-aos-delay='400'>
 
-                                <li>_ Si las cartas coinciden, se irán del tablero. Caso contrario, se darán vuelta nuevamente</li>
+                                <li className='shadow-text'>_ Si las cartas coinciden, se irán del tablero. Caso contrario, se darán vuelta nuevamente</li>
                             </div>
                         </div>
                         <div className='overflow-hidden'>
                             <div data-aos='fade-up' data-aos-duration='1000' data-aos-delay='500'>
 
-                                <li>_ Son un total de tres niveles que aumentan de dificultad</li>
+                                <li className='shadow-text'>_ Son un total de tres niveles que aumentan de dificultad</li>
                             </div>
                         </div>
                         <div className='overflow-hidden'>
                             <div data-aos='fade-up' data-aos-duration='1000' data-aos-delay='600'>
 
-                                <li>_ Verás un cronómetro, en este se basa tu puntaje final</li>
+                                <li className='shadow-text'>_ Verás un cronómetro, en este se basa tu puntaje final</li>
                             </div>
                         </div>
                         <div className='overflow-hidden'>
                             <div data-aos='fade-up' data-aos-duration='1000' data-aos-delay='700'>
 
-                                <li>_ Al finalizar podrás colocar tu nombre para guardar tu puntaje en la tabla</li>
+                                <li className='shadow-text'>_ Al finalizar podrás colocar tu nombre para guardar tu puntaje en la tabla</li>
                             </div>
                         </div>
                     </ul>
@@ -87,6 +87,20 @@ export default function Landing() {
             </div>
             <div className='w-screen pl-24 mb-14'>
                 <span className='text-[10px] text-gray-500'>Creado por Juan M. Buccolini - FullStack Developer MERN</span>
+                <div className="flex gap-x-8">
+                <a
+                href="https://www.linkedin.com/in/juan-mateo-buccolini/"
+                target="_blank"
+                >Linkedin</a>
+                <a
+                href="https://github.com/JMBuccolini"
+                target="_blank"
+                >Github</a>
+                <a
+                href="mailto:juanmateobuccolini@gmail.com"
+                target="_blank"
+                >Write Me</a>
+            </div>
             </div>
         </div>
     )
