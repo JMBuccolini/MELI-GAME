@@ -18,7 +18,7 @@ function Main() {
 
   //ESTO NOS DEVUELVE LOS SEGUNDOS EN UN CONTADOR DESCENDENTE PARA EL TIMER
   const time = new Date();
-  time.setSeconds(time.getSeconds() + 400);
+  time.setSeconds(time.getSeconds() + 4);
 
   //Función para obtener data de la API de MELI
   const handleFetchData = async (inicio = 0, limite = 2, producto = 'iphone') => {

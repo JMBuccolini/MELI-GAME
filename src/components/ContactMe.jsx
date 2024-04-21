@@ -1,5 +1,5 @@
-
-
+import { FiGithub, FiLinkedin } from "react-icons/fi";
+import { MdOutlineMailOutline } from "react-icons/md";
 
 export default function ContactMe(){
     return(
@@ -14,15 +14,15 @@ export default function ContactMe(){
                 <a
                 href="https://www.linkedin.com/in/juan-mateo-buccolini/"
                 target="_blank"
-                >Linkedin</a>
+                ><FiLinkedin size={40} title="Linkedin" stroke="white"/></a>
                 <a
                 href="https://github.com/JMBuccolini"
                 target="_blank"
-                >Github</a>
+                ><FiGithub size={40} stroke="white"/></a>
                 <a
                 href="mailto:juanmateobuccolini@gmail.com"
                 target="_blank"
-                >Write Me</a>
+                ><MdOutlineMailOutline size={40} className="text-white"  /></a>
             </div>
         </div>
     )

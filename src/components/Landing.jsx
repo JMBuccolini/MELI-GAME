@@ -82,7 +82,7 @@ export default function Landing() {
                 }}>
                 JUGAR
             </button>
-            <div className='w-screen pl-24 mb-14'>
+            <div className='w-screen pl-24'>
                 <span className='text-[10px] text-gray-500'>*Mercado Libre no auspicia, produce ni promociona este juego ni es responsable de ninguna manera por el mismo</span>
             </div>
             <div className='w-screen pl-24 mb-14'>
