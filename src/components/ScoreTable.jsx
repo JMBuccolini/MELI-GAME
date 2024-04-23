@@ -9,6 +9,8 @@ import axios from "axios";
 export default function ScoreTable() {
   const [dbData, setDbData] = useState();
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const score = searchParams.get("score");
 
   const handleRetry = () => {
     router.push('/');
@@ -25,8 +27,7 @@ export default function ScoreTable() {
   };
 
   useEffect(() => {
-    const searchParams = useSearchParams();
-    const score = searchParams.get("score");
+    
 
     Swal.fire({
       title: "Coloca tu nombre para guardar el puntaje!",
