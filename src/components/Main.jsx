@@ -17,7 +17,7 @@ function Main() {
 
   //ESTO NOS DEVUELVE LOS SEGUNDOS EN UN CONTADOR DESCENDENTE PARA EL TIMER
   const time = new Date();
-  time.setSeconds(time.getSeconds() + 2);
+  time.setSeconds(time.getSeconds() + 400);
 
   //Función para obtener data de la API de MELI
   const handleFetchData = async (
@@ -28,7 +28,7 @@ function Main() {
     await axios
       .get(`https://api.mercadolibre.com/sites/MLA/search?q=${producto}`)
       .then((response) => {
-        const originalProducts = response.data.results.slice(inicio, limite); // Limitamos a 6 productos
+        const originalProducts = response.data.results.slice(inicio, limite); // Limitamos a 4 productos
         const duplicatedProducts = [...originalProducts, ...originalProducts]; // Duplicar los productos
         const shuffledProducts = shuffleArray(duplicatedProducts); // Reordenar aleatoriamente los productos
         dispatch({ type: "FILL_BOARD", payload: shuffledProducts }); // Enviar al reducer para llenar el estado global
@@ -98,9 +98,9 @@ function Main() {
     console.log("valor de level", level);
     setBoard((prev) => !prev);
     if (level === 2) {
-      handleFetchData(0, 2, "motorola");
+      handleFetchData(0, 6, "motorola");
     } else if (level === 3) {
-      handleFetchData(0, 2, "xiaiomi");
+      handleFetchData(0, 8, "xiaiomi");
     } else if (level === 4) {
       setBoard(false);
       setFinish(true);
@@ -131,7 +131,6 @@ function Main() {
       <Timer
         expiryTimestamp={time}
         finished={finish}
-        handleFetchData={handleFetchData}
         dispatch={dispatch}
         setLevel={setLevel}
       />
@@ -145,12 +144,13 @@ function Main() {
                 data-aos-delay={`${index + 1}00`}
                 data-aos-duration="700"
                 data-aos-anchor="top-bottom"
+                key={product.id + index}
               >
                 <Card
                   title={product.title}
                   id={product.id}
                   src={product.thumbnail}
-                  key={product.id + index}
+                  
                   addCard={addCard}
                   product={product}
                 />

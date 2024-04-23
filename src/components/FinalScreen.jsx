@@ -1,12 +1,17 @@
 import { useRouter } from "next/navigation";
 import ContactMe from '@/components/ContactMe'
 ;
-export default function FinalScreen({ timeRemaining, resetGame }) {
+export default function FinalScreen({ timeRemaining }) {
     const router= useRouter()
     const score = timeRemaining + 50 * 2;
+    
     const handleRetry = () => {
         router.back()
     };
+
+    const handleScore = () => {
+        router.push(`/score?score=${score}`)
+    }
 
     return (
         <div className="flex flex-col justify-center items-center h-full">
@@ -28,7 +33,11 @@ export default function FinalScreen({ timeRemaining, resetGame }) {
             </div>
 
             <div className=" flex justify-center items-center gap-x-14 mt-14">
-
+                <button 
+                className={`py-[14px] px-[20px] text-white bg-blue-400 hover:bg-blue-600 rounded-lg hover:scale-110 transition-all duration-500 ease-in-out`}
+                onClick={()=> handleScore()}>
+                    Guardar puntaje
+                </button>
                 <button
                     onClick={() => handleRetry()}
                     className={`py-[14px] px-[20px] text-white bg-blue-400 hover:bg-blue-600 rounded-lg hover:scale-110 transition-all duration-500 ease-in-out`}>

@@ -25,7 +25,7 @@ export default function Timer({
       setLevel(4);
       dispatch({ type: "CLEAR_BOARD" });
     }
-  });
+  }, [totalSeconds, setLevel, dispatch]);
 
   return (
     <div>
