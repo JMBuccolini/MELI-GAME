@@ -82,7 +82,7 @@ export default function ScoreTable() {
     const fetchData = async () => {
       await getScoreTable();
     };
-  }, [router]);
+  }, []);
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
