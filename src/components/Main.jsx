@@ -98,9 +98,9 @@ function Main() {
     console.log("valor de level", level);
     setBoard((prev) => !prev);
     if (level === 2) {
-      handleFetchData(0, 6, "motorola");
+      handleFetchData(0, 4, "motorola");
     } else if (level === 3) {
-      handleFetchData(0, 8, "xiaiomi");
+      handleFetchData(0, 4, "xiaiomi");
     } else if (level === 4) {
       setBoard(false);
       setFinish(true);
