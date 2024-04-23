@@ -19,7 +19,7 @@ export default function ScoreTable() {
 
   const getScoreTable = async () => {
     try {
-      const response = await axios.get("http://localhost:5050/scores");
+      const response = await axios.get("https://meli-game-back.onrender.com/scores");
       const usersData = response.data.usersData;
       setDbData(usersData); // Assuming response is an object with a `data` property containing the actual data
     } catch (error) {
@@ -48,7 +48,7 @@ export default function ScoreTable() {
             name: name,
             score: score,
           };
-          const response = await fetch("http://localhost:5050/scores", {
+          const response = await fetch("https://meli-game-back.onrender.com/scores", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
