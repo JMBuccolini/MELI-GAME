@@ -1,37 +1,36 @@
-import { useTimer } from "react-timer-hook";
+
 import { useEffect } from "react";
 import FinalScreen from "./FinalScreen";
 
 export default function Timer({
-  expiryTimestamp,
-  finished,
+  totalSeconds,
+  finish,
   handleFetchData,
   dispatch,
   setLevel,
+  finalScore
 }) {
-  const { totalSeconds, pause } = useTimer({
-    expiryTimestamp,
-    onExpire: () => console.warn("onExpire called"),
-  });
 
   useEffect(() => {
-    if (finished) {
-      pause(); // Pausar el cronómetro cuando finished es true
+    if (finish) {
+      
+     
+      dispatch({type:'FINAL_SCORE',payload:totalSeconds})
     }
-  }, [finished]);
+  }, [finish]);
 
   useEffect(() => {
     if (totalSeconds === 0) {
       setLevel(4);
+      dispatch({type:"FINAL_SCORE", payload: 5})
       dispatch({ type: "CLEAR_BOARD" });
     }
   }, [totalSeconds, setLevel, dispatch]);
-
   return (
     <div>
       <div
         className={`${
-          finished ? "hidden" : "flex"
+          finish ? "hidden" : "flex"
         } justify-center items-center text-white text-[40px] mt-14 mb-14`}
       >
         <div className="overflow-hidden">
@@ -45,10 +44,10 @@ export default function Timer({
 
       <div
         className={`${
-          finished || totalSeconds === 0 ? "flex" : "hidden"
+          totalSeconds === 0 ? "flex" : "hidden"
         } mt-14`}
       >
-        <FinalScreen timeRemaining={totalSeconds} resetGame={handleFetchData} />
+        <FinalScreen finalScore = {finalScore} resetGame={handleFetchData} />
       </div>
     </div>
   );

@@ -1,88 +1,38 @@
 "use client";
 
-import { useEffect, useState, Suspense } from "react";
+import { useState, Suspense, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { useSearchParams } from "next/navigation";
-import Swal from "sweetalert2";
 import axios from "axios";
+import Cookies from 'js-cookie'
 
-export default function ScoreTable() {
+export default function ScoreTable(props) {
   const [dbData, setDbData] = useState();
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const score = searchParams.get("score");
+  const cookies = Cookies.get()
+  const token = cookies.token
+
+
 
   const handleRetry = () => {
-    router.push('/');
+    router.push('/home');
   };
 
   const getScoreTable = async () => {
     try {
-      const response = await axios.get("https://meli-game-back.onrender.com/scores");
-      const usersData = response.data.usersData;
-      setDbData(usersData); // Assuming response is an object with a `data` property containing the actual data
+      const response = await axios.get("http://localhost:5050/api/tasks", { headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
+      setDbData(response.data)
     } catch (error) {
       console.error("Error fetching scores:", error);
     }
   };
 
-  useEffect(() => {
-    
 
-    Swal.fire({
-      title: "Coloca tu nombre para guardar el puntaje!",
-      input: "text",
-      inputAttributes: {
-        autocapitalize: "off",
-      },
-      confirmButtonText: "Guardar",
-      showLoaderOnConfirm: true,
-      preConfirm: async (name) => {
-        try {
-          if (!name) {
-            // Si el nombre está vacío, muestra un mensaje de validación
-            Swal.showValidationMessage("Por favor, ingresa tu nombre.");
-            return;
-          }
-
-          const postData = {
-            name: name,
-            score: score,
-          };
-          const response = await fetch("https://meli-game-back.onrender.com/scores", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(postData),
-          });
-          if (!response.ok) {
-            const errorMessage = await response.json();
-            throw new Error(errorMessage);
-          }
-          return response.json();
-        } catch (error) {
-          Swal.showValidationMessage(`
-            Request failed: ${error}
-          `);
-        }
-      },
-      allowOutsideClick: () => false,
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire({
-          title: "Puntaje guardado!",
-          text: "¡Gracias por jugar!",
-          icon: "success",
-        });
-        fetchData();
-      }
-    });
-
-    const fetchData = async () => {
-      await getScoreTable();
-    };
-  }, []);
+  useEffect(()=>{
+    getScoreTable()
+  },[])
 
   return (
     <Suspense fallback={<div>Loading...</div>}>

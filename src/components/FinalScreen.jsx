@@ -1,33 +1,48 @@
 import { useRouter } from "next/navigation";
 import ContactMe from '@/components/ContactMe'
-;
-export default function FinalScreen({ timeRemaining }) {
+import axios from 'axios'
+import { useAuth } from "@/context/AuthContetx";
+import Cookies from 'js-cookie'
+
+export default function FinalScreen({finalScore}) {
     const router= useRouter()
-    const score = timeRemaining + 50 * 2;
     
+    const {user} = useAuth()
+  
     const handleRetry = () => {
-        router.back()
+        router.push('/')
     };
 
-    const handleScore = () => {
-        router.push(`/score?score=${score}`)
+    const cookies = Cookies.get()
+    const token = cookies.token
+  
+    const handleScore = async ()=> {
+       const res =  await axios.post('http://localhost:5050/api/tasks',{name: user.username, score: finalScore, user:user.id},
+       { headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        })
+
+        router.push('/score')
+   
     }
+
 
     return (
         <div className="flex flex-col justify-center items-center h-full">
             <div className="text-white text-[20px]">
                 {
-                    timeRemaining != 0 ?
+                  true ?
                         <div className="flex flex-col justify-center items-center ">
 
-                            <p>¡Felicitaciones! Terminaste el juego</p>
-                            <p>Tu puntuación es: {score}</p>
+                            <p>{`¡Felicitaciones ${user.username}!`} Terminaste el juego</p>
+                            <p>Tu puntuación es: {finalScore}</p>
                         </div>
                         :
                         <div className="flex flex-col justify-center items-center gap-y-8">
                             <p> Se ha acabado el tiempo, ¡mejor suerte la próxima! 
                             </p>
-                            <p>Tu puntuación es: {score}</p>
+                            <p>Tu puntuación es: {finalScore}</p>
                         </div>
                 }
             </div>

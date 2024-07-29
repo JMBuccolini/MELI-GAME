@@ -1,6 +1,7 @@
 export const cardsInitialState = {
   queue: [],
   board: [],
+  finalScore: 0,
 };
 
 export function cardsReducer(state, action) {
@@ -41,7 +42,12 @@ export function cardsReducer(state, action) {
       return {
         ...state,
         board:[]
-      }
+      };
+      case "FINAL_SCORE":
+        return{
+          ...state,
+          finalScore : state.finalScore + action.payload
+        }
 
     default:
       return state;
