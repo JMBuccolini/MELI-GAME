@@ -24,7 +24,7 @@ export default function RootLayout({
     <AuthProvider>
      
       <html lang="en">
-        <body className={inter.className}>
+        <body className={`${inter.className} bg-yellow-300 `}>
          <NavBar/>
           {children}</body>
       </html>

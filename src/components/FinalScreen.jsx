@@ -29,11 +29,11 @@ export default function FinalScreen({finalScore}) {
 
 
     return (
-        <div className="flex flex-col justify-center items-center h-full">
+        <div className="flex flex-col  items-center h-screen bg-yellow-300 pt-32">
             <div className="text-white text-[20px]">
                 {
                   true ?
-                        <div className="flex flex-col justify-center items-center ">
+                        <div className="flex flex-col justify-center items-center text-2xl font-bold">
 
                             <p>{`¡Felicitaciones ${user.username}!`} Terminaste el juego</p>
                             <p>Tu puntuación es: {finalScore}</p>

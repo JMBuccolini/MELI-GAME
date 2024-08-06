@@ -14,7 +14,7 @@ export default function Home() {
 
 
   return (
-    <main className='w-full'>
+    <main className='w-full bg-yellow-300'>
       <Landing />
     </main>
   );

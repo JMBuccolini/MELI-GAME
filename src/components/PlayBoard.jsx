@@ -2,6 +2,7 @@ import Timer from "./Timer";
 import Card from "./Card";
 import Swal from "sweetalert2";
 import { useTimer } from "react-timer-hook";
+import { useEffect } from "react";
 
 export default function PlayBoard(props) {
   const {
@@ -18,7 +19,7 @@ export default function PlayBoard(props) {
 
   //ESTO NOS DEVUELVE LOS SEGUNDOS EN UN CONTADOR DESCENDENTE PARA EL TIMER
   const time = new Date();
-  time.setSeconds(time.getSeconds() + 400);
+  time.setSeconds(time.getSeconds() + 4);
   const expiryTimestamp = time;
   const { totalSeconds, pause } = useTimer({
     expiryTimestamp,
@@ -43,10 +44,18 @@ export default function PlayBoard(props) {
       dispatch({ type: "FINAL_SCORE", payload: totalSeconds });
       setEndGame(true);
     }
+   
   };
 
+  useEffect(()=>{
+    if (totalSeconds === 0 ) {
+      dispatch({ type: "FINAL_SCORE", payload: totalSeconds });
+      setEndGame(true);
+    }
+  },[totalSeconds])
+
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div className="flex flex-col justify-center items-center bg-yellow-300">
       <div className="overflow-hidden">
         <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
           <h1 className="mt-24 text-[60px] font-extrabold text-white">

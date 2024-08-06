@@ -42,14 +42,14 @@ export default function page() {
           <input
             type="email"
             {...register("email", { required: true })}
-            className="w-full bg-white border-2 border-blue-300 text-white px-4 py-2 rounded-md m-2"
+            className="w-full bg-white border-2 border-blue-300 text-blue-500 px-4 py-2 rounded-md m-2"
             placeholder="email"
           />
           {signinErrors.email && <p className="text-red-500">Email is required</p>}
           <input
             type="password"
             {...register("password", { required: true })}
-            className="w-full bg-white border-2 border-blue-300 text-white px-4 py-2 rounded-md m-2"
+            className="w-full bg-white border-2 border-blue-300 text-blue-500 px-4 py-2 rounded-md m-2"
             placeholder="password"
           />
           {signinErrors.password && (

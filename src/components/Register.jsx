@@ -25,7 +25,7 @@ export default function Register() {
 
   return (
     <div className="flex items-center justify-center h-screen bg-yellow-300">
-      <div className="bg-white max-w-md p-10 rounded-md text-blue-300">
+      <div className="bg-white max-w-md p-10 rounded-md text-red-500">
         {registerErrors.map((error, i) => (
           <div className="bg-red-500 p-2 text-white" key={i}>
             {error}
@@ -36,7 +36,7 @@ export default function Register() {
           <input
             type="text"
             {...register("username", { required: true })}
-            className="w-full bg-white border-2 border-blue-300 text-white px-4 py-2 rounded-md m-2"
+            className="w-full bg-white border-2 border-blue-300 text-blue-300 px-4 py-2 rounded-md m-2"
             placeholder="username"
           />
           {errors.username && (
@@ -45,14 +45,14 @@ export default function Register() {
           <input
             type="email"
             {...register("email", { required: true })}
-            className="w-full bg-white border-2 border-blue-300 text-white px-4 py-2 rounded-md m-2"
+            className="w-full bg-white border-2 border-blue-300 text-blue-300 px-4 py-2 rounded-md m-2"
             placeholder="email"
           />
           {errors.email && <p className="text-red-500">Email is required</p>}
           <input
             type="password"
             {...register("password", { required: true })}
-            className="w-full bg-white border-2 border-blue-300 text-white px-4 py-2 rounded-md m-2"
+            className="w-full bg-white border-2 border-blue-300 text-blue-300 px-4 py-2 rounded-md m-2"
             placeholder="password"
           />
           {errors.password && (

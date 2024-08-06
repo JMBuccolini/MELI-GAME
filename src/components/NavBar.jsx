@@ -12,7 +12,7 @@ export default function NavBar() {
  
   if (showNavBar)
     return (
-      <div className="bg-yellow-300 h-32 w-full z-50 overflow-hidden">
+      <div className="bg-yellow-300 h-32 w-full z-50 overflow-hidden shadow-xl relative">
         {user ? (
           <div className="flex justify-end items-end  gap-x-8 w-full pt-8 pr-8">
             <img

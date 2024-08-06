@@ -24,14 +24,14 @@ function Card({ title, src, addCard, product }) {
 
   return (
     <div
-      className={`flip-card  transition-all duration-200 ease-in-out`}
+      className={`flip-card  transition-all duration-200 ease-in-out `}
       onClick={() => {
         handleButtonClick(product)
         setFlipped(!flipped);
       }}
     >
       <div
-        className={`flip-card-inner ${
+        className={`flip-card-inner shadow-2xl ${
           flipped && glow ? "[transform:rotateY(180deg)] shadow-custom transition-all duration-500 ease-in-out" : ""
         }`}
       >
