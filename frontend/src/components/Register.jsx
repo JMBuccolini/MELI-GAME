@@ -17,6 +17,7 @@ export default function Register() {
 
   const onSubmit = handleSubmit(async (values) => {
     signup(values);
+    router.push('/login')
   });
 
   return (
