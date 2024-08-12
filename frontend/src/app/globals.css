@@ -1,0 +1,71 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-gray-800;
+}
+
+.flip-card {
+  background-color: transparent;
+  width: 300px;
+  height: 400px;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+  border: 1px transparent;
+  border-radius: 20px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+  background-color: transparent;
+  border: 1px transparent;
+  border-radius: 20px;
+
+}
+
+
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 1px transparent;
+  border-radius: 20px;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  transform: rotateY(0deg);
+  color: black;
+  border: 1px transparent;
+  border-radius: 20px;
+}
+
+.flip-card-back {
+  background-color: white;
+  color: white;
+  transform: rotateY(180deg);
+  border: 1px transparent;
+  border-radius: 20px;
+}
+
+
+.shadow-custom {
+  box-shadow: 0 0 20px 15px rgba(136, 173, 221, 0.5);
+  border: 1px transparent;
+  border-radius: 20px;
+}
+
+
+
+
+.shadow-text{
+  text-shadow: 0px 1px 4px #23430C;
+}
