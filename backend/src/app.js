@@ -11,7 +11,7 @@ dotenv.config()
 const app = express();
 
 app.use(cors({
-    origin: process.env.HOST || 'http://localhost:3000',
+    origin: process.env.HOST || '*',
     credentials: true
 }))
 app.use(morgan("dev"));
