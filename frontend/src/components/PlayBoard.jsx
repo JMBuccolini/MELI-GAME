@@ -20,7 +20,7 @@ export default function PlayBoard(props) {
   //ESTO NOS DEVUELVE LOS SEGUNDOS EN UN CONTADOR DESCENDENTE PARA EL TIMER
   const time = new Date();
   const expiryTimestamp = time;
-  time.setSeconds(time.getSeconds() + 4);
+  time.setSeconds(time.getSeconds() + 300);
   const { totalSeconds, pause, resume } = useTimer({
     expiryTimestamp,
     onExpire: () => console.warn("onExpire called"),

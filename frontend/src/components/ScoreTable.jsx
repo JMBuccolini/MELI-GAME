@@ -19,7 +19,7 @@ export default function ScoreTable(props) {
 
   const getScoreTable = async () => {
     try {
-      const response = await axios.get("http://localhost:5050/api/tasks", { headers: {
+      const response = await axios.get("https://meli-game-2.onrender.com/api/tasks", { headers: {
         'Authorization': `Bearer ${token}`
       }
     });
