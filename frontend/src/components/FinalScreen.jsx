@@ -17,7 +17,7 @@ export default function FinalScreen({finalScore}) {
     const token = cookies.token
   
     const handleScore = async ()=> {
-       const res =  await axios.post('http://localhost:5050/api/tasks',{name: user.username, score: finalScore, user:user.id},
+       const res =  await axios.post('https://meli-game-2.onrender.com/api/tasks',{name: user.username, score: finalScore, user:user.id},
        { headers: {
             'Authorization': `Bearer ${token}`
           }
