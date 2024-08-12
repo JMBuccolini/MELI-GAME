@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const instance = axios.create({
-    baseURL: 'meli-game-hj4gshkaj-juanmateobuccolinigmailcoms-projects.vercel.app/api',
+    baseURL: 'https://meli-game-2.onrender.com/api',
     withCredentials: true
 })
 
