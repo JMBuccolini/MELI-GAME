@@ -2,7 +2,7 @@
 
 import { useForm } from "react-hook-form";
 import { useAuth } from "@/context/AuthContetx";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
@@ -14,11 +14,13 @@ export default function Register() {
   } = useForm();
   const { signup, isAuthenticated, errors: registerErrors } = useAuth();
   const router = useRouter();
+  const [selectImg, setSelectImg] = useState("");
 
   const onSubmit = handleSubmit(async (values) => {
     signup(values);
-    router.push('/login')
+    router.push("/login");
   });
+
 
   return (
     <div className="flex items-center justify-center h-screen bg-yellow-300">
@@ -63,12 +65,19 @@ export default function Register() {
                   type="radio"
                   value="/avatars/avatar1.jpg"
                   {...register("img", { required: true })}
-                  className="hidden hover:border-2 hover:border-blue-300 transition-all duration-300 ease-in-out"
+                  className="hidden"
+                  onChange={() => setSelectImg("/avatars/avatar1.jpg")}
                 />
                 <img
                   src="/avatars/avatar1.jpg"
                   alt="Avatar 1"
-                  className="w-16 h-16 cursor-pointer border-2 border-transparent hover:border-blue-500"
+                  className={`w-16 h-16 cursor-pointer border-2 
+                    ${
+                      selectImg == "/avatars/avatar1.jpg"
+                        ? "border-blue-500 border-2"
+                        : "border-transparent hover:border-blue-500"
+                    }`}
+                  onClick={() => setSelectImg("/avatars/avatar1.jpg")}
                 />
               </label>
               <label>
@@ -77,11 +86,18 @@ export default function Register() {
                   value="/avatars/avatar2.jpeg"
                   {...register("img", { required: true })}
                   className="hidden"
+                  onChange={() => setSelectImg("/avatars/avatar2.jpg")}
                 />
                 <img
                   src="/avatars/avatar2.jpeg"
                   alt="Avatar 2"
-                  className="w-16 h-16 cursor-pointer border-2 border-transparent hover:border-blue-500"
+                  className={`w-16 h-16 cursor-pointer border-2 
+                    ${
+                      selectImg == "/avatars/avatar2.jpg"
+                        ? "border-blue-500 border-2"
+                        : "border-transparent hover:border-blue-500"
+                    }`}
+                  onClick={() => setSelectImg("/avatars/avatar2.jpg")}
                 />
               </label>
               <label>
@@ -90,11 +106,18 @@ export default function Register() {
                   value="/avatars/avatar3.jpeg"
                   {...register("img", { required: true })}
                   className="hidden"
+                  onChange={() => setSelectImg("/avatars/avatar3.jpg")}
                 />
                 <img
                   src="/avatars/avatar3.jpeg"
                   alt="Avatar 3"
-                  className="w-16 h-16 cursor-pointer border-2 border-transparent hover:border-blue-500"
+                  className={`w-16 h-16 cursor-pointer border-2 
+                    ${
+                      selectImg == "/avatars/avatar3.jpg"
+                        ? "border-blue-500 border-2"
+                        : "border-transparent hover:border-blue-500"
+                    }`}
+                  onClick={() => setSelectImg("/avatars/avatar3.jpg")}
                 />
               </label>
               <label>
@@ -103,11 +126,18 @@ export default function Register() {
                   value="/avatars/avatar4.png"
                   {...register("img", { required: true })}
                   className="hidden"
+                  onChange={() => setSelectImg("/avatars/avatar4.jpg")}
                 />
                 <img
                   src="/avatars/avatar4.png"
                   alt="Avatar 4"
-                  className="w-16 h-16 cursor-pointer border-2 border-transparent hover:border-blue-500"
+                  className={`w-16 h-16 cursor-pointer border-2 
+                    ${
+                      selectImg == "/avatars/avatar4.jpg"
+                        ? "border-blue-500 border-2"
+                        : "border-transparent hover:border-blue-500"
+                    }`}
+                  onClick={() => setSelectImg("/avatars/avatar4.jpg")}
                 />
               </label>
               <label>
@@ -116,11 +146,18 @@ export default function Register() {
                   value="/avatars/avatar5.jpeg"
                   {...register("img", { required: true })}
                   className="hidden"
+                  onChange={() => setSelectImg("/avatars/avatar5.jpg")}
                 />
                 <img
                   src="/avatars/avatar5.jpeg"
                   alt="Avatar 5"
-                  className="w-16 h-16 cursor-pointer border-2 border-transparent hover:border-blue-500"
+                  className={`w-16 h-16 cursor-pointer border-2 
+                    ${
+                      selectImg == "/avatars/avatar5.jpg"
+                        ? "border-blue-500 border-2"
+                        : "border-transparent hover:border-blue-500"
+                    }`}
+                  onClick={() => setSelectImg("/avatars/avatar5.jpg")}
                 />
               </label>
             </div>
