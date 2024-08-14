@@ -4,6 +4,8 @@
 
 body {
   @apply bg-gray-800;
+  margin: 0;
+  overflow-x: hidden;
 }
 
 .flip-card {
