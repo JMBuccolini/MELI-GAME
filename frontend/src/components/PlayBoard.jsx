@@ -15,6 +15,7 @@ export default function PlayBoard(props) {
     addCard,
     setEndGame,
     finalScore,
+    isClickable
   } = props;
 
   //ESTO NOS DEVUELVE LOS SEGUNDOS EN UN CONTADOR DESCENDENTE PARA EL TIMER
@@ -50,7 +51,7 @@ export default function PlayBoard(props) {
 
 
 
-  console.log(products.board.length);
+
   useEffect(() => {
     if (totalSeconds === 0) {
       dispatch({ type: "FINAL_SCORE", payload: totalSeconds });
@@ -69,7 +70,7 @@ export default function PlayBoard(props) {
     <div className="flex flex-col justify-center items-center bg-yellow-300">
       <div className="overflow-hidden">
         <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
-          <h1 className="mt-24 text-[60px] font-extrabold text-white">
+          <h1 className="mt-24 text-[60px] font-extrabold text-blue-900 ">
             JUEGO DE MEMORIA
           </h1>
         </div>
@@ -110,6 +111,8 @@ export default function PlayBoard(props) {
                   src={product.thumbnail_id}
                   addCard={addCard}
                   product={product}
+                  isClickable={isClickable}
+                  index = {index}
                 />
               </div>
             ))}

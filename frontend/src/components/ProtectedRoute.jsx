@@ -6,7 +6,7 @@ import { useEffect } from "react";
 
 const ProtectedRoute = ({ children }) => {
   const { isAuthenticated } = useAuth();
-  console.log('Dentro de protected', isAuthenticated)
+
   const router = useRouter();
 
   useEffect(() => {

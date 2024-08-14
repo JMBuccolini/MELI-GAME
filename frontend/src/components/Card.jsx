@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-function Card({ title, src, addCard, product }) {
+function Card({ title, src, addCard, product,isClickable, index }) {
   const [flipped, setFlipped] = useState(false);
   const [glow, setGlow] = useState(false)
 
@@ -11,10 +11,11 @@ function Card({ title, src, addCard, product }) {
 
   useEffect(() => {}, [flipped]);
 
-  const handleButtonClick = (product) => {
+  const handleButtonClick = (product, index) => {
+   
     setGlow(true)
     // Call the addCard function passed as a prop
-    const cardsMatch = addCard(product);
+    const cardsMatch = addCard(product, index);
     
     // If cards don't match, flip them back
     if (!cardsMatch) {
@@ -22,13 +23,14 @@ function Card({ title, src, addCard, product }) {
         
         setFlipped(false);
 
-      },"2000")
+      },"1000")
     }
   };
 
+
   return (
     <div
-      className={`flip-card  transition-all duration-200 ease-in-out `}
+      className={`flip-card  transition-all duration-200 ease-in-out ${isClickable ? '' : 'pointer-events-none'}  `}
       onClick={() => {
         handleButtonClick(product)
         setFlipped(!flipped);

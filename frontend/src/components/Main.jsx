@@ -15,8 +15,9 @@ function Main() {
   const [board, setBoard] = useState(false);
   const [finish, setFinish] = useState(false);
   const [endGame, setEndGame] = useState(false);
-
-
+  const [flippedCards, setFlippedCards] = useState([]);
+  const [isClickable, setIsClickable] = useState(true);
+  const maxFlippedCards = 2;
  
   const { finalScore } = products;
 
@@ -52,7 +53,17 @@ function Main() {
 
   //AGREGAR UNA CARTA AL QUEUE:
 
-  const addCard = (product) => {
+  const addCard = (product, index) => {
+    if (!isClickable) return;
+    const newFlippedCards = [...flippedCards, index];
+    setFlippedCards(newFlippedCards);
+    if (newFlippedCards.length === maxFlippedCards) {
+      setIsClickable(false);
+      setTimeout(() => {
+        setFlippedCards([]);
+        setIsClickable(true);
+      }, 1000); // Ajusta el tiempo según sea necesario
+    }
     if (products.queue.length != 0) {
       const [firstCard] = products.queue;
       const secondCard = product;
@@ -105,6 +116,7 @@ function Main() {
             level={level}
             addCard={addCard}
             finalScore={finalScore}
+            isClickable={isClickable}
           />
         </div>
       );
