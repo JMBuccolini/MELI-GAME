@@ -23,7 +23,7 @@ function Card({ title, src, addCard, product,isClickable, index }) {
         
         setFlipped(false);
 
-      },"1000")
+      },"1500")
     }
   };
 
