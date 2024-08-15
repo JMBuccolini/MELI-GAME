@@ -18,7 +18,7 @@ export default function Footer() {
             responsable de ninguna manera por el mismo
           </span>
           <span className="text-24 text-blue-950">
-            Creado por Juan M. Buccolini - FullStack Developer MERN
+            Creado por Juan M. Buccolini - Software Developer
           </span>
         </div>
       </div>

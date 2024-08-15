@@ -15,7 +15,7 @@ export default function ScoreTable(props) {
   const handleRetry = () => {
     router.push("/home");
   };
-
+  // 
   const getScoreTable = async () => {
     try {
       const response = await axios.get("https://meli-game-2.onrender.com/api/tasks", {
@@ -76,10 +76,10 @@ export default function ScoreTable(props) {
                   table.map((row, index) => (
                     <tr
                       key={index}
-                      className="flex justify-between items-center border-2 p-4 border-blue-700 rounded-lg mb-4"
+                      className="flex justify-between items-center shadow-md p-4 bg-white text-blue-900 rounded-lg mb-4"
                     > <td>{index + 4}</td>
-                      <td>{row.name}</td>
-                      <td>{row.score}</td>
+                      <td className="font-bold">{row.name}</td>
+                      <td className="rounded-md border-1 bg-blue-400 px-4 py-2 text-white">{row.score}</td>
                     </tr>
                   ))}
               </tbody>
