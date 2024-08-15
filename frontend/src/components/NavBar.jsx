@@ -5,12 +5,8 @@ import { useRouter, usePathname } from "next/navigation";
 
 export default function NavBar() {
   const router = useRouter();
-  const pathname = usePathname();
   const { user, logout } = useAuth();
 
-  const showNavBar = pathname !== "/login" && pathname !== "/register";
-
-  if (showNavBar)
     return (
       <div className="bg-yellow-300 h-[100px] w-full flex justify-center items-center z-50 overflow-hidden shadow-xl relative">
         {user ? (
@@ -85,5 +81,5 @@ export default function NavBar() {
         )}
       </div>
     );
-  if (!showNavBar) return null;
+
 }

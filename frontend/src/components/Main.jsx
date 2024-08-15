@@ -62,7 +62,7 @@ function Main() {
       setTimeout(() => {
         setFlippedCards([]);
         setIsClickable(true);
-      }, 1000); // Ajusta el tiempo según sea necesario
+      }, 1500); // Ajusta el tiempo según sea necesario
     }
     if (products.queue.length != 0) {
       const [firstCard] = products.queue;
