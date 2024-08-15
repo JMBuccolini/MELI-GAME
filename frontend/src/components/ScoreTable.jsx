@@ -38,7 +38,7 @@ export default function ScoreTable(props) {
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <div className="flex flex-col justify-center items-center bg-gray-300 ">
+      <div className="flex flex-col justify-center items-center bg-gradient-to-t from-gray-300 via-gray-400 to-blue-900 ">
         {/* <div className="flex flex-col justify-center items-center mt-14">
           <p className="text-white text-[40px]">¡Gracias por haber jugado! </p>
           <p className="text-white text-[35px]">
@@ -47,7 +47,7 @@ export default function ScoreTable(props) {
         </div> */}
 
         <div className="flex flex-col items-center justify-center">
-          <p className="text-blue-900 font-bold text-center text-[40px] pt-8">PODIO DE GANADORES</p>
+          <p className="text-white font-bold text-center text-[40px] pt-8">PODIO DE GANADORES</p>
           <div className="flex gapx-6 justify-center items-center">
             <div className="flex flex-col justify-center items-center gap-y-2">
               <GiTrophy size={100} />
