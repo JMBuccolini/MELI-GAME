@@ -15,13 +15,15 @@ export default function Register() {
   const { signup, isAuthenticated, errors: registerErrors } = useAuth();
   const router = useRouter();
   const [selectImg, setSelectImg] = useState("");
-const [loader, setLoader] = useState(false)
+  const [loader, setLoader] = useState(false);
+
   const onSubmit = handleSubmit(async (values) => {
-    setLoader(true)
+    console.log(values);
+    setLoader(true);
     await signup(values);
+
     router.push("/login");
   });
-
 
   return (
     <div className="flex items-center justify-center h-screen bg-yellow-300">
@@ -67,7 +69,7 @@ const [loader, setLoader] = useState(false)
                   value="/avatars/avatar1.jpg"
                   {...register("img", { required: true })}
                   className="hidden"
-                  onChange={() => setSelectImg("/avatars/avatar1.jpg")}
+                  onClick={() => setSelectImg("/avatars/avatar1.jpg")}
                 />
                 <img
                   src="/avatars/avatar1.jpg"
@@ -78,7 +80,6 @@ const [loader, setLoader] = useState(false)
                         ? "border-blue-500 border-2"
                         : "border-transparent hover:border-blue-500"
                     }`}
-                  onClick={() => setSelectImg("/avatars/avatar1.jpg")}
                 />
               </label>
               <label>
@@ -87,7 +88,7 @@ const [loader, setLoader] = useState(false)
                   value="/avatars/avatar2.jpeg"
                   {...register("img", { required: true })}
                   className="hidden"
-                  onChange={() => setSelectImg("/avatars/avatar2.jpg")}
+                  onClick={() => setSelectImg("/avatars/avatar2.jpg")}
                 />
                 <img
                   src="/avatars/avatar2.jpeg"
@@ -98,7 +99,6 @@ const [loader, setLoader] = useState(false)
                         ? "border-blue-500 border-2"
                         : "border-transparent hover:border-blue-500"
                     }`}
-                  onClick={() => setSelectImg("/avatars/avatar2.jpg")}
                 />
               </label>
               <label>
@@ -107,7 +107,7 @@ const [loader, setLoader] = useState(false)
                   value="/avatars/avatar3.jpeg"
                   {...register("img", { required: true })}
                   className="hidden"
-                  onChange={() => setSelectImg("/avatars/avatar3.jpg")}
+                  onClick={() => setSelectImg("/avatars/avatar3.jpg")}
                 />
                 <img
                   src="/avatars/avatar3.jpeg"
@@ -118,7 +118,6 @@ const [loader, setLoader] = useState(false)
                         ? "border-blue-500 border-2"
                         : "border-transparent hover:border-blue-500"
                     }`}
-                  onClick={() => setSelectImg("/avatars/avatar3.jpg")}
                 />
               </label>
               <label>
@@ -127,7 +126,7 @@ const [loader, setLoader] = useState(false)
                   value="/avatars/avatar4.png"
                   {...register("img", { required: true })}
                   className="hidden"
-                  onChange={() => setSelectImg("/avatars/avatar4.jpg")}
+                  onClick={() => setSelectImg("/avatars/avatar4.jpg")}
                 />
                 <img
                   src="/avatars/avatar4.png"
@@ -138,7 +137,6 @@ const [loader, setLoader] = useState(false)
                         ? "border-blue-500 border-2"
                         : "border-transparent hover:border-blue-500"
                     }`}
-                  onClick={() => setSelectImg("/avatars/avatar4.jpg")}
                 />
               </label>
               <label>
@@ -147,7 +145,7 @@ const [loader, setLoader] = useState(false)
                   value="/avatars/avatar5.jpeg"
                   {...register("img", { required: true })}
                   className="hidden"
-                  onChange={() => setSelectImg("/avatars/avatar5.jpg")}
+                  onClick={() => setSelectImg("/avatars/avatar5.jpg")}
                 />
                 <img
                   src="/avatars/avatar5.jpeg"
@@ -158,7 +156,6 @@ const [loader, setLoader] = useState(false)
                         ? "border-blue-500 border-2"
                         : "border-transparent hover:border-blue-500"
                     }`}
-                  onClick={() => setSelectImg("/avatars/avatar5.jpg")}
                 />
               </label>
             </div>

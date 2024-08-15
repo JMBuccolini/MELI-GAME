@@ -19,7 +19,7 @@ export default function Landing() {
   return (
     <div className=" bg-gray-300  text-white font-black w-screen h-screen flex flex-col items-center justify-center relative">
       <div className="absolute top-0 left-0 w-full h-full z-1 opacity-50  ">
-        <video playsinline autoplay muted loop className="w-full ">
+        <video playsInline autoPlay muted loop className="w-full ">
           <source src="./video-fondo-ml.mp4" type="video/mp4" />
         </video>
         {/* <ReactPlayer
