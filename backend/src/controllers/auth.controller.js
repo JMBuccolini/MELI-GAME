@@ -17,7 +17,6 @@ export const register = async (req, res) => {
     });
     if(userFound) return res.status(400).json(['the email or username are already in use'])
     const passwordHash = await bcrypt.hash(password, 10); //hasheamos el pass
-    
     const newUser = new User({ username, email, password: passwordHash, img }); //instanciamos los datos con el pass hasheado
     const userSaved = await newUser.save(); //guardamos los datos
  
@@ -36,6 +35,7 @@ export const register = async (req, res) => {
       updatedAt: userSaved.updatedAt,
     }); //respondemos al frontend con la info del usuario logueado
   } catch (error) {
+    console.log("error en el registro",error)
     res.status(500).json({ message: error.message });
   }
 };
