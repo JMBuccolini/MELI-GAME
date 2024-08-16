@@ -3,7 +3,7 @@ import { MdOutlineMailOutline } from "react-icons/md";
 
 export default function Footer() {
   return (
-    <div className="w-full h-[25vh] flex-col items-center justify-center bg-white pt-6 relative z-2 mt-auto">
+    <div className="w-full h-full flex-col items-center justify-center bg-white pt-6 relative z-2 mt-auto">
       {/* ESTE ES EL CONTENEDOR DEL TEXTO */}
       <div className="overflow-hidden w-full flex justify-center items-center text-center">
         <div
@@ -17,6 +17,8 @@ export default function Footer() {
             *Mercado Libre no auspicia, produce ni promociona este juego ni es
             responsable de ninguna manera por el mismo
           </span>
+          <span className="text-[10px] ">Este juego fue creado utilizando la API que ofrece Mercado Libre. Debes seleccionar los pares de tarjetas que sean iguales y pasar los tres niveles de dificultad. Si estás conforme con tu puntaje, puedes guardarlo y tal vez llegar al podio de ganadores.</span>
+          <span className="text-[10px] ">Este juego ha pasado por varias etapas de desarrollo y mejora. Esta es la v.2.0.0 con una modificación radical de la primera entrega</span>
           <span className="text-24 text-blue-950">
             Creado por Juan M. Buccolini - Software Developer
           </span>
@@ -24,7 +26,7 @@ export default function Footer() {
       </div>
 
       {/* ESTE ES EL CONTENEDOR DE ICONOS */}
-      <div className="flex gap-x-2 pt-4 w-full justify-center items-center">
+      <div className="flex gap-x-2 pt-4 w-full justify-center items-center pb-4">
         <div className="overflow-hidden hover:scale-110 transition-all duration-500 ease-in-out">
           <div
             data-aos="fade-up-right"

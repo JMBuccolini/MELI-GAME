@@ -67,7 +67,7 @@ export default function PlayBoard(props) {
 
 
   return (
-    <div className="flex flex-col justify-center items-center bg-yellow-300">
+    <div className="flex flex-col justify-center items-center bg-gradient-to-t from-gray-300 via-gray-400 to-yellow-500">
       <div className="overflow-hidden">
         <div data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
           <h1 className="mt-24 text-[60px] font-extrabold text-blue-900 ">

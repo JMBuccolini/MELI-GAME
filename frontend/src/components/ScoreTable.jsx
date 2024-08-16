@@ -3,14 +3,12 @@
 import { useState, Suspense, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
-import Cookies from "js-cookie";
 import { GiLaurelsTrophy, GiTrophy, GiTrophyCup } from "react-icons/gi";
 export default function ScoreTable(props) {
   const [dbData, setDbData] = useState();
   const [table,setTable] = useState();
   const router = useRouter();
-  const cookies = Cookies.get();
-  const token = cookies.token;
+
 
   const handleRetry = () => {
     router.push("/home");
@@ -18,11 +16,7 @@ export default function ScoreTable(props) {
   // 
   const getScoreTable = async () => {
     try {
-      const response = await axios.get("https://meli-game-2.onrender.com/api/tasks", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await axios.get("https://meli-game-2.onrender.com/api/tasks");
       setDbData(response.data);
       const sliced = response.data.slice(3,10)
       setTable(sliced)

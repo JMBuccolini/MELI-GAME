@@ -41,6 +41,14 @@ export default function NavBar() {
               >
                 LOGOUT
               </button>
+              <button
+                className="px-[20px] py-[3px] text-[12px] text-blue-900 underline underline-offset-2 w-[150px] hover:font-bold hover:scale-110 transition-all duration-500 ease-in-out"
+                onClick={() => {
+                  router.push("/score");
+                }}
+              >
+                PUNTAJES
+              </button>
             </div>
           </div>
         ) : (
@@ -76,6 +84,15 @@ export default function NavBar() {
               >
                 INGRESÁ
               </button>
+              <button
+                className="rounded-lg px-[20px] py-[10px] text-[12px] text-blue-950 underline underline-offset-[6px] w-[150px] hover:font-bold hover:scale-110 transition-all duration-500 ease-in-out"
+                onClick={() => {
+                  router.push("/score");
+                }}
+              >
+                PUNTAJES
+              </button>
+              
             </div>
           </div>
         )}
