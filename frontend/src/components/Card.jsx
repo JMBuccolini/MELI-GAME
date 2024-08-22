@@ -50,7 +50,11 @@ function Card({ title, src, addCard, product,isClickable, index,shipping,link,pr
             <p className="text-white font-bold">{title}</p>
             <p className="font-normal">Precio:{price}</p>
             <p className="font-normal pb-4">Envío gratis: {`${shipping ? 'SI' : 'NO'}  `}</p>
-            <a href={link} target="_blank" className="rounded-xl bg-blue-600 p-[5px]">Click para comprar!</a>
+            <a href={link} target="_blank" className="rounded-xl bg-blue-600 p-[5px]"
+            onClick={(event) => {
+              event.stopPropagation(); // Evita que el evento de click se propague al contenedor de la carta y se desarme el tablero
+            }}
+            >Click para comprar!</a>
           </div>
         </div>
       </div>
