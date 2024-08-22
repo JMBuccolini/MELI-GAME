@@ -35,11 +35,12 @@ export default function Profile() {
         BIENVENIDO A TU PERFIL
       </p>
       {/* Contenedor de card: */}
-
-      <div className="flex w-[685px] h-[131px] bg-white shadow-xl rounded-xl gap-x-14 items-center p-[20px]">
+        {
+          user? (
+            <div className="flex w-[685px] h-[131px] bg-white shadow-xl rounded-xl gap-x-14 items-center p-[20px]">
         <img
-          src={user?.image}
-          alt={user?.username}
+          src={user.image}
+          alt={user.username}
           width={90}
           height={60}
           className="rounded-full border-2 border-blue-500"
@@ -51,6 +52,10 @@ export default function Profile() {
           <p className="text-blue-500 text-md">último puntaje:{' '}{score && score[0].score}</p>
         </div>
       </div>
+          ) :
+          <div>cargandooooooooo</div>
+        }
+      
       {/*Contenedor de puntajes:*/}
 
       {score &&
