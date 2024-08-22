@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 
-function Card({ title, src, addCard, product,isClickable, index }) {
+function Card({ title, src, addCard, product,isClickable, index,shipping,link,price }) {
   const [flipped, setFlipped] = useState(false);
   const [glow, setGlow] = useState(false)
 
@@ -23,7 +23,7 @@ function Card({ title, src, addCard, product,isClickable, index }) {
         
         setFlipped(false);
 
-      },"1500")
+      },"2000")
     }
   };
 
@@ -33,7 +33,7 @@ function Card({ title, src, addCard, product,isClickable, index }) {
       className={`flip-card  transition-all duration-200 ease-in-out ${isClickable ? '' : 'pointer-events-none'}  `}
       onClick={() => {
         handleButtonClick(product)
-        setFlipped(!flipped);
+        setFlipped(true);
       }}
     >
       <div
@@ -44,8 +44,14 @@ function Card({ title, src, addCard, product,isClickable, index }) {
         <div className="flip-card-front bg-yellow-400">
           <img src="./imgs/logomeli.png" alt="logo-meli" />
         </div>
-        <div className="flip-card-back h-[300px] flex flex-col items-center justify-center overflow-hidden">
+        <div className="flip-card-back h-[300px] flex flex-col items-center justify-center overflow-hidden relative">
           <img src={newURL} alt={title} className="w-full rounded-lg object-contain h-full" />
+          <div className="absolute top-[30%] left-0 text-white font-bold backdrop-blur-md w-full py-5">
+            <p className="text-white font-bold">{title}</p>
+            <p className="font-normal">Precio:{price}</p>
+            <p className="font-normal pb-4">Envío gratis: {`${shipping ? 'SI' : 'NO'}  `}</p>
+            <a href={link} target="_blank" className="rounded-xl bg-blue-600 p-[5px]">Click para comprar!</a>
+          </div>
         </div>
       </div>
     </div>

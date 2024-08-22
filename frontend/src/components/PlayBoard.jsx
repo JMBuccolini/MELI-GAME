@@ -109,6 +109,9 @@ export default function PlayBoard(props) {
                   title={product.title}
                   id={product.id}
                   src={product.thumbnail_id}
+                  link={product.permalink}
+                  shipping={product.shipping.free_shipping}
+                  price={product.price}
                   addCard={addCard}
                   product={product}
                   isClickable={isClickable}

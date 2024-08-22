@@ -14,7 +14,7 @@ export default function Profile() {
   const getTasks = async (token) => {
     await axios
       .post(
-        "http://localhost:5050/api/usertasks",
+        "https://meli-game-2.onrender.com/api/usertasks",
         { username: user.username } // Aquí se envía el username en el body
       )
       .then((res) => setScore(res.data.tasks));
