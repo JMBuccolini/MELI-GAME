@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import { getTasks, createTask } from "../controllers/tasks.controllers.js";
+import { getTasks, createTask, getUserTasks } from "../controllers/tasks.controllers.js";
 
 const router = Router();
 
@@ -9,5 +9,5 @@ router.get("/tasks", getTasks);
 router.post("/tasks", createTask);
 // router.delete("/tasks:id", authRequired, deleteTask);
 // router.put("/tasks:id", authRequired, updateTask);
-
+router.post("/usertasks", getUserTasks);
 export default router;

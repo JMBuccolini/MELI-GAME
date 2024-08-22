@@ -3,7 +3,7 @@ import { MdOutlineMailOutline } from "react-icons/md";
 
 export default function Footer() {
   return (
-    <div className="w-full h-full flex-col items-center justify-center bg-white pt-6 relative z-2 mt-auto">
+    <div className="w-full bottom-0 flex-col items-center justify-center bg-white pt-6 relative z-2 mt-auto">
       {/* ESTE ES EL CONTENEDOR DEL TEXTO */}
       <div className="overflow-hidden w-full flex justify-center items-center text-center">
         <div

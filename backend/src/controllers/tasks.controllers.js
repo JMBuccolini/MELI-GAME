@@ -1,7 +1,7 @@
 import Task from "../models/task.model.js";
 
 export const getTasks = async (req, res) => {
-  const tasks = await Task.find().limit(10).skip(0)
+  const tasks = await Task.find().limit(10).skip(0);
   const compareScores = (a, b) => b.score - a.score;
 
   tasks.sort(compareScores);
@@ -15,8 +15,7 @@ export const createTask = async (req, res) => {
   const newTask = new Task({
     name,
     score,
-    user
-
+    user,
   });
 
   const savedTask = await newTask.save();
@@ -24,25 +23,16 @@ export const createTask = async (req, res) => {
   res.json(savedTask);
 };
 
-// export const getTask = async (_, res) => {
-//   const task = await Task.find().limit(10).skip(0)
-//   console.log('lista de back',task)
-//   if (!task) return res.status(404).json({ message: "There are no tasks" });
-//   res.json(task);
-// };
+export const getUserTasks = async (req, res) => {
+  const { username } = req.body;
 
-// export const deleteTask = async (req, res) => {
-//   const task = await Task.findByIdAndDelete(req.params.id);
+  const tasks = await Task.find({ name: username }).limit(10).skip(0);
+  const sortDates = (a, b) => b.date - a.date;
 
-//   if (!task) return res.status(404).json({ message: "Task not found" });
-//   res.json({message: 'Task deleted'});
-// };
+  tasks.sort(sortDates);
 
-// export const updateTask = async (req, res) => {
-//   const task = await Task.findByIdAndUpdate(req.params.id, req.body, {
-//     new: true,
-//   });
-
-//   if (!task) return res.status(404).json({ message: "Task not found" });
-//   res.json(task);
-// };
+  res.json({
+    msg: "Lista de scores",
+    tasks,
+  });
+};
