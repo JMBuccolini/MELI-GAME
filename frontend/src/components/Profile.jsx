@@ -38,8 +38,8 @@ export default function Profile() {
 
       <div className="flex w-[685px] h-[131px] bg-white shadow-xl rounded-xl gap-x-14 items-center p-[20px]">
         <img
-          src={user.image}
-          alt={user.username}
+          src={user?.image}
+          alt={user?.username}
           width={90}
           height={60}
           className="rounded-full border-2 border-blue-500"
