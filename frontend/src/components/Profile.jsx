@@ -58,7 +58,7 @@ export default function Profile() {
       
       {/*Contenedor de puntajes:*/}
 
-      {score ?
+      {score.length > 0 ?
         score.slice(1).map((data, index) => (
           <div
             key={index}
