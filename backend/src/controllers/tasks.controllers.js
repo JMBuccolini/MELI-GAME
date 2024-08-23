@@ -1,12 +1,15 @@
 import Task from "../models/task.model.js";
 
 export const getTasks = async (req, res) => {
-  const tasks = await Task.find().limit(10).skip(0);
-  const compareScores = (a, b) => b.score - a.score;
+  try {
+    const tasks = await Task.find()
+      .sort({ score: -1 })  // Ordena por score en orden descendente
+      .limit(10);            // Limita a los 10 primeros resultados
 
-  tasks.sort(compareScores);
-
-  res.json(tasks);
+    res.json(tasks);
+  } catch (error) {
+    res.status(500).json({ message: "Error retrieving tasks", error });
+  }
 };
 
 export const createTask = async (req, res) => {
