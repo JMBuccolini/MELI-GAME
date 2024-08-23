@@ -20,7 +20,7 @@ export default function Profile() {
       .then((res) => setScore(res.data.tasks));
   };
 
-  console.log("puntajes", score);
+
 
   useEffect(() => {
     const cookies = Cookies.get();

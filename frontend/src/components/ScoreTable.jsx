@@ -20,7 +20,7 @@ export default function ScoreTable(props) {
       setDbData(response.data);
       const sliced = response.data.slice(3,10)
       setTable(sliced)
-      console.log(response.data)
+    
     } catch (error) {
       console.error("Error fetching scores:", error);
     }
