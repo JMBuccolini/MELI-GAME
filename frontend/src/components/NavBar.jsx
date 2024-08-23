@@ -13,7 +13,7 @@ export default function NavBar() {
     <div className="bg-yellow-300 h-[100px] w-full flex justify-center items-center z-50 overflow-hidden shadow-xl relative">
       {user ? (
         <div className="flex justify-center items-end w-full px-8 gap-x-72 ">
-          <a href="/">
+          <Link href="/">
             <div className="flex flex-col items-center">
               <img
                 src="./imgs/logo-memory-compress.png"
@@ -26,7 +26,7 @@ export default function NavBar() {
                 MEMORY GAME
               </span>
             </div>
-          </a>
+          </Link>
           <div className="flex items-end gap-x-6">
             <Link
               href={"/profile"}
@@ -69,7 +69,7 @@ export default function NavBar() {
         </div>
       ) : (
         <div className="flex justify-center items-end w-full px-8 gap-x-44 ">
-          <a href="/">
+          <Link href="/">
             <div className="flex flex-col items-center">
               <img
                 src="./imgs/logo-memory-compress.png"
@@ -82,7 +82,7 @@ export default function NavBar() {
                 MEMORY GAME
               </span>
             </div>
-          </a>
+          </Link>
           <div className="flex items-end gap-x-6">
             <button
               className="rounded-lg px-[20px] py-[10px] text-[12px] text-blue-950 underline underline-offset-[6px] w-[150px] hover:font-bold hover:scale-110 transition-all duration-500 ease-in-out"
