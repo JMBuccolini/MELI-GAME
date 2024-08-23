@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 
 export default function Profile() {
   const { user } = useAuth();
-  const [score, setScore] = useState();
+  const [score, setScore] = useState([]);
 
   // https://meli-game-2.onrender.com/api/usertasks
 
@@ -49,7 +49,7 @@ export default function Profile() {
         <div>
           <h2 className="text-xl font-bold">{user.username}</h2>
           <p className="text-md font-light pb-2">{user.email}</p>
-          <p className="text-blue-500 text-md">último puntaje:{' '}{score ? score[0].score : '-'}</p>
+          <p className="text-blue-500 text-md">último puntaje:{' '}{score.length > 0 ? score[0].score : "-"}</p>
         </div>
       </div>
           ) :
