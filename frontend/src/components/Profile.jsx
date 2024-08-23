@@ -53,12 +53,12 @@ export default function Profile() {
         </div>
       </div>
           ) :
-          <div>cargandooooooooo</div>
+          <div>cargando...</div>
         }
       
       {/*Contenedor de puntajes:*/}
 
-      {score &&
+      {score ?
         score.slice(1).map((data, index) => (
           <div
             key={index}
@@ -85,7 +85,16 @@ export default function Profile() {
               </p>
             </div>
           </div>
-        ))}
+        )) 
+        : 
+        <div
+        key={index}
+        className="flex w-[685px] h-[65px] bg-white shadow-xl rounded-xl gap-x-14 items-center p-[20px] mt-4"
+      >
+        <div className="flex justify-center items-center gap-x-44 w-full">
+          <p>Hasta ahora no tienes puntajes guardados</p>
+        </div>
+      </div>}
     </div>
   );
 }
