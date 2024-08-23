@@ -88,7 +88,6 @@ export default function Profile() {
         )) 
         : 
         <div
-        key={index}
         className="flex w-[685px] h-[65px] bg-white shadow-xl rounded-xl gap-x-14 items-center p-[20px] mt-4"
       >
         <div className="flex justify-center items-center gap-x-44 w-full">
