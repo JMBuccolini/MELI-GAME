@@ -44,6 +44,7 @@ function Main() {
         const duplicatedProducts = [...originalProducts, ...originalProducts]; // Duplicar los productos
         const shuffledProducts = shuffleArray(duplicatedProducts); // Reordenar aleatoriamente los productos
         dispatch({ type: "FILL_BOARD", payload: shuffledProducts }); // Enviar al reducer para llenar el estado global
+       
       })
       .catch((error) => {
         console.error("Error fetching products:", error);

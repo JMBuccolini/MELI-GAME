@@ -18,7 +18,7 @@ export default function Register() {
   const [loader, setLoader] = useState(false);
 
   const onSubmit = handleSubmit(async (values) => {
-    console.log(values);
+   
     setLoader(true);
     await signup(values);
 

@@ -7,20 +7,20 @@ import { useEffect, useState } from "react";
 
 export default function Profile() {
   const { user } = useAuth();
-  const [score, setScore] = useState();
+  const [score, setScore] = useState([]);
 
   // https://meli-game-2.onrender.com/api/usertasks
 
   const getTasks = async (token) => {
     await axios
       .post(
-        "http://localhost:5050/api/usertasks",
+        "https://meli-game-2.onrender.com/api/usertasks",
         { username: user.username } // Aquí se envía el username en el body
       )
       .then((res) => setScore(res.data.tasks));
   };
 
-  console.log("puntajes", score);
+
 
   useEffect(() => {
     const cookies = Cookies.get();
@@ -35,8 +35,9 @@ export default function Profile() {
         BIENVENIDO A TU PERFIL
       </p>
       {/* Contenedor de card: */}
-
-      <div className="flex w-[685px] h-[131px] bg-white shadow-xl rounded-xl gap-x-14 items-center p-[20px]">
+        {
+          user? (
+            <div className="flex w-[685px] h-[131px] bg-white shadow-xl rounded-xl gap-x-14 items-center p-[20px]">
         <img
           src={user.image}
           alt={user.username}
@@ -48,12 +49,16 @@ export default function Profile() {
         <div>
           <h2 className="text-xl font-bold">{user.username}</h2>
           <p className="text-md font-light pb-2">{user.email}</p>
-          <p className="text-blue-500 text-md">último puntaje:{' '}{score && score[0].score}</p>
+          <p className="text-blue-500 text-md">último puntaje:{' '}{score.length > 0 ? score[0].score : "-"}</p>
         </div>
       </div>
+          ) :
+          <div>cargando...</div>
+        }
+      
       {/*Contenedor de puntajes:*/}
 
-      {score &&
+      {score.length > 0 ?
         score.slice(1).map((data, index) => (
           <div
             key={index}
@@ -80,7 +85,15 @@ export default function Profile() {
               </p>
             </div>
           </div>
-        ))}
+        )) 
+        : 
+        <div
+        className="flex w-[685px] h-[65px] bg-white shadow-xl rounded-xl gap-x-14 items-center p-[20px] mt-4"
+      >
+        <div className="flex justify-center items-center gap-x-44 w-full">
+          <p>Hasta ahora no tienes puntajes guardados</p>
+        </div>
+      </div>}
     </div>
   );
 }
