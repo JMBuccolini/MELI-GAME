@@ -49,7 +49,7 @@ export default function Profile() {
         <div>
           <h2 className="text-xl font-bold">{user.username}</h2>
           <p className="text-md font-light pb-2">{user.email}</p>
-          <p className="text-blue-500 text-md">último puntaje:{' '}{score && score[0].score}</p>
+          <p className="text-blue-500 text-md">último puntaje:{' '}{score ? score[0].score : '-'}</p>
         </div>
       </div>
           ) :
