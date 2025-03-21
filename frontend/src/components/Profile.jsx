@@ -4,10 +4,12 @@ import axios from "axios";
 import { useAuth } from "@/context/AuthContetx";
 import Cookies from "js-cookie";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function Profile() {
   const { user } = useAuth();
   const [score, setScore] = useState([]);
+  const router = useRouter();
 
   // https://meli-game-2.onrender.com/api/usertasks
 
@@ -19,8 +21,6 @@ export default function Profile() {
       )
       .then((res) => setScore(res.data.tasks));
   };
-
-
 
   useEffect(() => {
     const cookies = Cookies.get();
@@ -35,30 +35,31 @@ export default function Profile() {
         BIENVENIDO A TU PERFIL
       </p>
       {/* Contenedor de card: */}
-        {
-          user? (
-            <div className="flex w-[685px] h-[131px] bg-white shadow-xl rounded-xl gap-x-14 items-center p-[20px]">
-        <img
-          src={user.image}
-          alt={user.username}
-          width={90}
-          height={60}
-          className="rounded-full border-2 border-blue-500"
-        />
+      {user ? (
+        <div className="flex w-[685px] h-[131px] bg-white shadow-xl rounded-xl gap-x-14 items-center p-[20px]">
+          <img
+            src={user.image}
+            alt={user.username}
+            width={90}
+            height={60}
+            className="rounded-full border-2 border-blue-500"
+          />
 
-        <div>
-          <h2 className="text-xl font-bold">{user.username}</h2>
-          <p className="text-md font-light pb-2">{user.email}</p>
-          <p className="text-blue-500 text-md">último puntaje:{' '}{score.length > 0 ? score[0].score : "-"}</p>
+          <div>
+            <h2 className="text-xl font-bold">{user.username}</h2>
+            <p className="text-md font-light pb-2">{user.email}</p>
+            <p className="text-blue-500 text-md">
+              último puntaje: {score.length > 0 ? score[0].score : "-"}
+            </p>
+          </div>
         </div>
-      </div>
-          ) :
-          <div>cargando...</div>
-        }
-      
+      ) : (
+        <div>cargando...</div>
+      )}
+
       {/*Contenedor de puntajes:*/}
 
-      {score.length > 0 ?
+      {score.length > 0 ? (
         score.slice(1).map((data, index) => (
           <div
             key={index}
@@ -85,15 +86,22 @@ export default function Profile() {
               </p>
             </div>
           </div>
-        )) 
-        : 
-        <div
-        className="flex w-[685px] h-[65px] bg-white shadow-xl rounded-xl gap-x-14 items-center p-[20px] mt-4"
-      >
-        <div className="flex justify-center items-center gap-x-44 w-full">
-          <p>Hasta ahora no tienes puntajes guardados</p>
+        ))
+      ) : (
+        <div className="flex w-[685px] h-[65px] bg-white shadow-xl rounded-xl gap-x-14 items-center p-[20px] mt-4">
+          <div className="flex justify-center items-center gap-x-44 w-full">
+            <p>Hasta ahora no tienes puntajes guardados</p>
+          </div>
         </div>
-      </div>}
+      )}
+      <button
+        className="rounded-lg mt-8 px-[20px] py-[14px] text-[18px] text-white border-2 bg-[#3483fa] border-blue-500 w-[250px] hover:bg-blue-600 hover:scale-110 transition-all duration-500 ease-in-out mb-14"
+        onClick={() => {
+          router.push("/home");
+        }}
+      >
+        JUGAR
+      </button>
     </div>
   );
 }

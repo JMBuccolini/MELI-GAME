@@ -2,7 +2,6 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-import ReactPlayer from "react-player";
 
 export default function Landing() {
   const router = useRouter();
@@ -22,13 +21,6 @@ export default function Landing() {
         <video playsInline autoPlay muted loop className="w-full ">
           <source src="./video-fondo-ml.mp4" type="video/mp4" />
         </video>
-        {/* <ReactPlayer
-          url="./video-fondo-ml.mp4"
-          loop="true"
-          muted
-          controls="false"
-          className='w-full'
-        /> */}
       </div>
 
       <div className="flex w-full container justify-center items-center">
@@ -53,10 +45,10 @@ export default function Landing() {
           data-aos-duration="1000"
           data-aos-delay="800"
           onClick={() => {
-            router.push("/home");
+            router.push("/profile");
           }}
         >
-          JUGAR
+          INICIAR SESIÓN
         </button>
       </div>
     </div>

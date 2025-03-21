@@ -1,7 +1,10 @@
-import Profile from '@/components/Profile.jsx'
+import Profile from "@/components/Profile.jsx";
+import ProtectedRoute from "@/components/ProtectedRoute";
 
-export default function Page(){
-    return(
-        <Profile/>
-    )
+export default function Page() {
+  return (
+    <ProtectedRoute>
+      <Profile />
+    </ProtectedRoute>
+  );
 }

@@ -20,7 +20,7 @@ export default function page() {
   const onSubmit = handleSubmit(async (data) => {
     setLoader(true);
     await signin(data);
-    router.push("/home");
+    router.push("/profile");
   });
 
   return (
