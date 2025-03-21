@@ -11,7 +11,7 @@ dotenv.config()
 const app = express();
 
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: 'meli-game-vzy6.vercel.app/',
     credentials: true
 }))
 app.use(morgan("dev"));
