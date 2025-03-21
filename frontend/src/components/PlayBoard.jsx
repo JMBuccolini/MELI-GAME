@@ -99,18 +99,14 @@ export default function PlayBoard(props) {
           {products.board &&
             products.board.map((product, index) => (
               <div
-                // data-aos="fade-up"
-                // data-aos-delay={`${index + 1}00`}
-                // data-aos-duration="700"
-                // data-aos-anchor="top-bottom"
                 key={product.id + index}
               >
                 <Card
-                  title={product.title}
+                  title={product.name}
                   id={product.id}
-                  src={product.thumbnail_id}
+                  src={product.pictures[0].url}
                   link={product.permalink}
-                  shipping={product.shipping.free_shipping}
+                  shipping={true}
                   price={product.price}
                   addCard={addCard}
                   product={product}

@@ -18,7 +18,6 @@ function Main() {
   const [flippedCards, setFlippedCards] = useState([]);
   const [isClickable, setIsClickable] = useState(true);
   const maxFlippedCards = 2;
- 
   const { finalScore } = products;
 
   //Función para desordenar el array con cards gemelas:
@@ -34,11 +33,11 @@ function Main() {
   //Función para obtener data de la API de MELI
   const handleFetchData = async (
     inicio = 0,
-    limite = 2,
+    limite = 4,
     producto = "iphone"
   ) => {
     await axios
-      .get(`https://api.mercadolibre.com/sites/MLA/search?q=${producto}`)
+      .get(`https://api.mercadolibre.com/products/search?status=active&site_id=MLA&q=${producto}`)
       .then((response) => {
         const originalProducts = response.data.results.slice(inicio, limite); // Limitamos a 4 productos
         const duplicatedProducts = [...originalProducts, ...originalProducts]; // Duplicar los productos
@@ -63,7 +62,7 @@ function Main() {
       setTimeout(() => {
         setFlippedCards([]);
         setIsClickable(true);
-      }, 1500); // Ajusta el tiempo según sea necesario
+      }, 1500); // Ajusta el tiempo dependiendo del gusto de cada uno
     }
     if (products.queue.length != 0) {
       const [firstCard] = products.queue;
@@ -95,9 +94,9 @@ function Main() {
   useEffect(() => {
     setBoard((prev) => !prev);
     if (level === 2) {
-      handleFetchData(0, 3, "motorola");
+      handleFetchData(0, 6, "motorola");
     } else if (level === 3) {
-      handleFetchData(0, 4, "xiaiomi");
+      handleFetchData(0, 8, "xiaiomi");
     } else if (level === 4) {
       setBoard(false);
     }
